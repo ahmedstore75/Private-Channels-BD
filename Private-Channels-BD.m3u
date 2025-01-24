@@ -121,8 +121,6 @@ https://app.ncare.live/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxI
 https://app.ncare.live/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI2/timetvusa.stream/playlist.m3u8
 #EXTINF:-1 tvg-id="" tvg-logo="https://www.jagobd.com/wp-content/uploads/2020/04/TIMES-24-TV.jpg" group-title="BANGLADESH",TIMES 24
 https://app.ncare.live/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI2/times24tv.stream/playlist.m3u8
-#EXTINF:-1 tvg-id="" tvg-logo="https://www.jagobd.com/wp-content/uploads/2016/02/TVONE-LOGO-Colour.png" group-title="BANGLADESH",TV ONE UK
-https://app.ncare.live/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI2/tvoneuksni.stream/playlist.m3u8
 #EXTINF:-1 tvg-id="" tvg-logo="https://www.jagobd.com/wp-content/uploads/2024/11/smtv.jpg" group-title="BANGLADESH",SM TV
 https://app.ncare.live/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI2/smtvbd.stream/playlist.m3u8
 #EXTINF:-1 tvg-id="" tvg-logo="https://www.natunsomoy.net/uploads/shares/jpgtopngconverter-com_-_2024-08-21T105850.117-2024-08-21-10-59-02.jpg" group-title="ISLAMIC",PEACE TV BANGLA
@@ -147,9 +145,7 @@ http://starshare.live:8080/live/3569087360/6542246996/19741.m3u8
 https://dplus.gammacdn.workers.dev/videos/113.m3u8
 #EXTINF:-1 tvg-id="" tvg-logo="https://kidscreation.tv/wp-content/uploads/2022/11/KidsCreation-Logo-1.png" group-title="KIDS",Kids Cartoon
 https://vods1.aynaott.com/kidscreation_test/tracks-v1a1/mono.m3u8
-#EXTINF:-1 tvg-id="" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnYXeLrbMzClkLGoB7lLlPl51ch2IdWDTz3g&s" group-title="KIDS",Mr Bean
-https://ythls.armelin.one/channel/UCbmWOFTbZoDLWqG1rvFnJ0g.m3u8
-#EXTINF:-1 tvg-id="" tvg-logo="https://www.jagobd.com/wp-content/uploads/2024/08/salaam.jpg" group-title="KIDS",SALAAM CHANNEL
+#EXTINF:-1 tvg-id="" tvg-logo="https://www.jagobd.com/wp-cds/2024/08/salaam.jpg" group-title="KIDS",SALAAM CHANNEL
 https://app.ncare.live/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI2/salamtv.stream/playlist.m3u8
 #EXTINF:-1 tvg-id="" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/e/ef/9XMHindiMusicTelevisionChannelLogo.jpg" group-title="HINDI MUSIC",9XM
 https://d35j504z0x2vu2.cloudfront.net/v1/master/0bc8e8376bd8417a1b6761138aa41c26c7309312/9xm/master.m3u8
@@ -235,9 +231,9 @@ https://d75dqofg5kmfk.cloudfront.net/bpk-tv/Andpictureshd1/default/andpictures.m
 https://d1cy85syyhvqz5.cloudfront.net/v1/master/7b67fbda7ab859400a821e9aa0deda20ab7ca3d2/aljazeeraLive/AJE/index.m3u8
 #EXTINF:-1 tvg-id="" tvg-logo="https://seeklogo.com/images/B/bbc-news-logo-8648ABD044-seeklogo.com.png" group-title="WORLD NEWS",BBC NEWS
 https://d2vnbkvjbims7j.cloudfront.net/containerA/LTN/playlist.m3u8
-#EXTINF:-1 tvg-id="" tvg-logo="" group-title="WORLD NEWS",DW NEWS
+#EXTINF:-1 tvg-id="" tvg-logo="https://i.imgur.com/oe3OUPg.png" group-title="WORLD NEWS",DW NEWS
 https://app.ncare.live/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI2/dwnews.stream/playlist.m3u8
-#EXTINF:-1 tvg-id="" tvg-logo="" group-title="WORLD NEWS",EXPRESS NEWS
+#EXTINF:-1 tvg-id="" tvg-logo="https://i.imgur.com/uOhpVph.png" group-title="WORLD NEWS",EXPRESS NEWS
 https://app.ncare.live/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI2/expressnews.stream/playlist.m3u8
 #EXTINF:-1 tvg-id="" tvg-logo="https://w7.pngwing.com/pngs/288/60/png-transparent-bangladesh-bengali-discovery-channel-television-channel-bangla-television-blue-text.png" group-title="INFORMATIVE",Discovery Bangla
 https://varun-iptv.netlify.app/m3u/discoverybengali.m3u8
