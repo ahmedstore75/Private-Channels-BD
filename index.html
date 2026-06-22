@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Perfect Screen-Fit IPTV</title>
+    <title>Premium Neon IPTV</title>
     <link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet" />
     <link href="https://unpkg.com/@videojs/themes@1.0.1/dist/city/index.css" rel="stylesheet">
     
@@ -16,7 +16,8 @@
         }
 
         body {
-            background-color: #0d0d0d;
+            /* কালারফুল ডার্ক গ্রাডিয়েন্ট ব্যাকগ্রাউন্ড */
+            background: linear-gradient(135deg, #0f0c20 0%, #060608 100%);
             color: #fff;
             display: flex;
             height: 100vh;
@@ -32,78 +33,113 @@
         /* --- SIDEBAR STYLE (DESKTOP) --- */
         .sidebar {
             width: 380px;
-            background-color: #151515;
+            background: rgba(20, 20, 30, 0.75);
+            backdrop-filter: blur(10px); /* গ্লাস ইফেক্ট */
             display: flex;
             flex-direction: column;
-            border-right: 1px solid #252525;
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
             z-index: 10;
-            box-shadow: 5px 0 15px rgba(0,0,0,0.5);
+            box-shadow: 5px 0 25px rgba(0,0,0,0.7);
         }
 
         .sidebar-header {
-            padding: 20px;
-            background: linear-gradient(to bottom, #1a1a1a, #151515);
-            border-bottom: 1px solid #252525;
+            padding: 25px 20px;
+            background: linear-gradient(to bottom, rgba(30, 25, 50, 0.5), rgba(20, 20, 30, 0.5));
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .sidebar-header h2 {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             margin-bottom: 15px;
-            color: #e50914;
-            font-weight: 700;
+            /* আকর্ষণীয় কালারফুল টেক্সট */
+            background: linear-gradient(45deg, #ff007f, #7928ca);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
             text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .search-bar {
             width: 100%;
-            padding: 12px 15px;
+            padding: 12px 20px;
             border-radius: 30px;
-            border: 1px solid #333;
-            background-color: #222;
+            border: 1px solid #443355;
+            background-color: rgba(255, 255, 255, 0.07);
             color: #fff;
             outline: none;
             font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        /* সার্চ বারে ক্লিক করলে নিওন গ্লো করবে */
+        .search-bar:focus {
+            border-color: #ff007f;
+            box-shadow: 0 0 15px rgba(255, 0, 127, 0.4);
+            background-color: rgba(255, 255, 255, 0.12);
         }
 
         .channel-list {
             flex: 1;
             overflow-y: auto;
             list-style: none;
-            padding: 10px;
+            padding: 15px;
             -webkit-overflow-scrolling: touch;
+        }
+
+        /* স্ক্রলবার সুন্দর করার জন্য */
+        .channel-list::-webkit-scrollbar {
+            width: 6px;
+        }
+        .channel-list::-webkit-scrollbar-thumb {
+            background: #443355;
+            border-radius: 10px;
         }
 
         .channel-item {
             display: flex;
             align-items: center;
             padding: 12px 15px;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             cursor: pointer;
-            border-radius: 8px;
-            background-color: #1e1e1e;
-            transition: all 0.2s ease-in-out;
+            border-radius: 12px;
+            background-color: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.02);
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
+        /* মাউস হোভার ইফেক্ট */
+        .channel-item:hover {
+            background-color: rgba(255, 255, 255, 0.08);
+            transform: translateY(-2px);
+            border-color: rgba(121, 40, 202, 0.4);
+        }
+
+        /* একটিভ চ্যানেলে নিওন ম্যাজেন্টা/পার্পল গ্রাডিয়েন্ট */
         .channel-item.active {
-            background: linear-gradient(135deg, #e50914, #b20710);
-            box-shadow: 0 4px 12px rgba(229, 9, 20, 0.3);
+            background: linear-gradient(135deg, #ff007f, #7928ca);
+            box-shadow: 0 5px 20px rgba(255, 0, 127, 0.4);
+            border-color: transparent;
         }
 
         .channel-logo {
-            width: 50px;
-            height: 50px;
-            border-radius: 8px;
+            width: 52px;
+            height: 52px;
+            border-radius: 10px;
             object-fit: cover;
             margin-right: 15px;
             background-color: #000;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
         }
 
         .channel-name {
-            font-size: 0.95rem;
+            font-size: 1rem;
             font-weight: 600;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
 
         /* --- MAIN PLAYER AREA --- */
@@ -115,6 +151,7 @@
             align-items: center;
             position: relative;
             overflow: hidden;
+            box-shadow: inset 0 0 50px rgba(0,0,0,0.8);
         }
 
         .video-js {
@@ -140,7 +177,7 @@
             height: 100vh !important;
         }
 
-        /* --- 📱 RESPONSIVE FOR MOBILE (PORTRAIT - সোজা অবস্থা) 📱 --- */
+        /* --- 📱 RESPONSIVE FOR MOBILE (PORTRAIT) 📱 --- */
         @media (max-width: 768px) and (orientation: portrait) {
             body {
                 flex-direction: column;
@@ -152,54 +189,49 @@
 
             .main-player {
                 width: 100%;
-                height: 35vh;
+                height: 32vh;
                 flex: none;
+                border-bottom: 2px solid #ff007f; /* মোবাইলে প্লেয়ারের নিচে একটি কালার বর্ডার */
             }
 
             .sidebar {
                 width: 100%;
-                height: 65vh;
+                height: 68vh;
                 border-right: none;
-                border-top: 1px solid #252525;
             }
 
-            /* ⚡ ম্যাজিক গ্রিড: স্ক্রিনের মাপে পাশাপাশি নিখুঁতভাবে ২টি করে কলাম থাকবে ⚡ */
             .channel-list {
                 display: grid;
-                grid-template-columns: repeat(2, 1fr); /* ২ কলাম ফিক্সড */
-                gap: 8px; /* বক্সগুলোর মাঝের ফাঁকা জায়গা কিছুটা কমানো হয়েছে */
-                padding: 10px;
+                grid-template-columns: repeat(2, 1fr); 
+                gap: 10px; 
+                padding: 12px;
                 width: 100%;
             }
 
-            /* চ্যানেল বক্স সাইজ ছোট এবং স্ক্রিন ফিট করা হয়েছে */
             .channel-item {
                 margin-bottom: 0;
-                padding: 8px;
+                padding: 12px 8px;
                 flex-direction: column;
                 text-align: center;
                 justify-content: center;
                 height: auto;
             }
 
-            /* 🎯 লোগোর সাইজ ছোট করে পারফেক্ট করা হয়েছে (৪৫ পিক্সেল) */
             .channel-logo {
                 margin-right: 0;
-                margin-bottom: 6px;
-                width: 45px !important;
-                height: 45px !important;
-                border-radius: 6px;
+                margin-bottom: 8px;
+                width: 50px !important;
+                height: 50px !important;
             }
 
-            /* চ্যানেলের নাম যাতে বক্সে সুন্দর দেখায় */
             .channel-name {
-                font-size: 0.8rem;
+                font-size: 0.85rem;
                 width: 100%;
                 text-align: center;
             }
         }
 
-        /* --- LANDSCAPE MODE (মোবাইল ঘুরালে ফুলস্ক্রিন) --- */
+        /* --- LANDSCAPE MODE --- */
         @media (max-width: 950px) and (orientation: landscape) {
             .sidebar {
                 display: none !important; 
@@ -227,11 +259,11 @@
 
         <div class="sidebar">
             <div class="sidebar-header">
-                <h2>IPTV Premium</h2>
+                <h2>IPTV Premium Live</h2>
                 <input type="text" id="search" class="search-bar" placeholder="🔍 সার্চ করুন চ্যানেল...">
             </div>
             <ul id="channelList" class="channel-list">
-                <p style="padding: 20px; color: #aaa; text-align: center;">চ্যানেল লোড হচ্ছে...</p>
+                <p style="padding: 20px; color: #ff007f; text-align: center; font-weight: 500; animation: pulse 1.5s infinite;">চ্যানেল লোড হচ্ছে...</p>
             </ul>
         </div>
     </div>
@@ -312,7 +344,7 @@
             player.play().catch(e => console.log("Interaction required."));
         }
 
-        // ক্রপ/ফুলস্ক্রিন বাটন ক্লিক ইভেন্ট (অটো রোটেট + অ্যাড্রেস বার হাইড)
+        // ক্রপ/ফুলস্ক্রিন বাটন ক্লিক ইভেন্ট
         player.on('fullscreenchange', () => {
             if (player.isFullscreen()) {
                 const elem = document.documentElement;
@@ -345,7 +377,7 @@
                 }
             })
             .catch(err => {
-                document.getElementById('channelList').innerHTML = '<p style="grid-column: span 2; padding: 20px; color: #e50914; text-align: center;">প্লেলিস্ট লোড ব্যর্থ।</p>';
+                document.getElementById('channelList').innerHTML = '<p style="grid-column: span 2; padding: 20px; color: #ff007f; text-align: center;">প্লেলিস্ট লোড ব্যর্থ।</p>';
             });
 
         // Search Filter
