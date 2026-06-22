@@ -16,7 +16,6 @@
         }
 
         body {
-            /* কালারফুল ডার্ক গ্রাডিয়েন্ট ব্যাকগ্রাউন্ড */
             background: linear-gradient(135deg, #0f0c20 0%, #060608 100%);
             color: #fff;
             display: flex;
@@ -32,9 +31,9 @@
 
         /* --- SIDEBAR STYLE (DESKTOP) --- */
         .sidebar {
-            width: 380px;
+            width: 360px;
             background: rgba(20, 20, 30, 0.75);
-            backdrop-filter: blur(10px); /* গ্লাস ইফেক্ট */
+            backdrop-filter: blur(10px);
             display: flex;
             flex-direction: column;
             border-right: 1px solid rgba(255, 255, 255, 0.05);
@@ -43,15 +42,14 @@
         }
 
         .sidebar-header {
-            padding: 25px 20px;
+            padding: 12px 15px; /* হেডার প্যাডিং কমানো হয়েছে */
             background: linear-gradient(to bottom, rgba(30, 25, 50, 0.5), rgba(20, 20, 30, 0.5));
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .sidebar-header h2 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            /* আকর্ষণীয় কালারফুল টেক্সট */
+            font-size: 1.2rem; /* সাইজ কিছুটা ছোট করা হয়েছে */
+            margin-bottom: 8px;
             background: linear-gradient(45deg, #ff007f, #7928ca);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -60,22 +58,22 @@
             letter-spacing: 1px;
         }
 
+        /* 🔍 সার্চ বার আরও চিকন ও কম্প্যাক্ট করা হয়েছে */
         .search-bar {
             width: 100%;
-            padding: 12px 20px;
-            border-radius: 30px;
+            padding: 6px 15px; /* প্যাডিং কমিয়ে চিকন করা হয়েছে */
+            border-radius: 20px;
             border: 1px solid #443355;
             background-color: rgba(255, 255, 255, 0.07);
             color: #fff;
             outline: none;
-            font-size: 0.95rem;
+            font-size: 0.85rem; /* ফন্ট সাইজ ছোট করা হয়েছে */
             transition: all 0.3s ease;
         }
 
-        /* সার্চ বারে ক্লিক করলে নিওন গ্লো করবে */
         .search-bar:focus {
             border-color: #ff007f;
-            box-shadow: 0 0 15px rgba(255, 0, 127, 0.4);
+            box-shadow: 0 0 12px rgba(255, 0, 127, 0.4);
             background-color: rgba(255, 255, 255, 0.12);
         }
 
@@ -83,13 +81,12 @@
             flex: 1;
             overflow-y: auto;
             list-style: none;
-            padding: 15px;
+            padding: 10px;
             -webkit-overflow-scrolling: touch;
         }
 
-        /* স্ক্রলবার সুন্দর করার জন্য */
         .channel-list::-webkit-scrollbar {
-            width: 6px;
+            width: 5px;
         }
         .channel-list::-webkit-scrollbar-thumb {
             background: #443355;
@@ -99,47 +96,43 @@
         .channel-item {
             display: flex;
             align-items: center;
-            padding: 12px 15px;
-            margin-bottom: 10px;
+            padding: 10px 12px;
+            margin-bottom: 8px;
             cursor: pointer;
-            border-radius: 12px;
+            border-radius: 10px;
             background-color: rgba(255, 255, 255, 0.04);
             border: 1px solid rgba(255, 255, 255, 0.02);
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.2s ease;
         }
 
-        /* মাউস হোভার ইফেক্ট */
         .channel-item:hover {
             background-color: rgba(255, 255, 255, 0.08);
-            transform: translateY(-2px);
+            transform: translateY(-1px);
             border-color: rgba(121, 40, 202, 0.4);
         }
 
-        /* একটিভ চ্যানেলে নিওন ম্যাজেন্টা/পার্পল গ্রাডিয়েন্ট */
         .channel-item.active {
             background: linear-gradient(135deg, #ff007f, #7928ca);
-            box-shadow: 0 5px 20px rgba(255, 0, 127, 0.4);
+            box-shadow: 0 4px 15px rgba(255, 0, 127, 0.3);
             border-color: transparent;
         }
 
         .channel-logo {
-            width: 52px;
-            height: 52px;
-            border-radius: 10px;
+            width: 45px;
+            height: 45px;
+            border-radius: 8px;
             object-fit: cover;
-            margin-right: 15px;
+            margin-right: 12px;
             background-color: #000;
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .channel-name {
-            font-size: 1rem;
+            font-size: 0.9rem;
             font-weight: 600;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
 
         /* --- MAIN PLAYER AREA --- */
@@ -151,7 +144,6 @@
             align-items: center;
             position: relative;
             overflow: hidden;
-            box-shadow: inset 0 0 50px rgba(0,0,0,0.8);
         }
 
         .video-js {
@@ -159,7 +151,6 @@
             height: 100% !important;
         }
 
-        /* ভিডিওর কালো দাগ সম্পূর্ণ দূর করার সিএসএস */
         .video-js video, 
         .vjs-tech {
             object-fit: fill !important; 
@@ -167,7 +158,6 @@
             height: 100% !important;
         }
 
-        /* ফুলস্ক্রিন মোডেও কালো দাগ বিন্দুমাত্র থাকবে না */
         .video-js:fullscreen .vjs-tech,
         .video-js:-webkit-full-screen .vjs-tech,
         .video-js::-webkit-media-controls-panel,
@@ -189,45 +179,65 @@
 
             .main-player {
                 width: 100%;
-                height: 32vh;
+                height: 30vh;
                 flex: none;
-                border-bottom: 2px solid #ff007f; /* মোবাইলে প্লেয়ারের নিচে একটি কালার বর্ডার */
+                border-bottom: 2px solid #ff007f;
             }
 
             .sidebar {
                 width: 100%;
-                height: 68vh;
+                height: 70vh;
                 border-right: none;
             }
 
+            .sidebar-header {
+                padding: 10px;
+            }
+
+            .sidebar-header h2 {
+                font-size: 1.1rem;
+                margin-bottom: 6px;
+                text-align: center;
+            }
+
+            /* 🎯 চ্যানেল বক্স স্ক্রিনে ১০০% পারফেক্টলি ফিট করার জন্য ম্যাজিক গ্রিড */
             .channel-list {
                 display: grid;
                 grid-template-columns: repeat(2, 1fr); 
-                gap: 10px; 
-                padding: 12px;
+                gap: 8px; 
+                padding: 8px;
                 width: 100%;
+                box-sizing: border-box;
             }
 
             .channel-item {
                 margin-bottom: 0;
-                padding: 12px 8px;
+                padding: 8px 5px;
                 flex-direction: column;
                 text-align: center;
                 justify-content: center;
-                height: auto;
+                height: 95px; /* ফিক্সড হাইট যাতে দুটো বক্স সমান লাইনে থাকে */
+                width: 100%;
+                box-sizing: border-box;
             }
 
             .channel-logo {
                 margin-right: 0;
-                margin-bottom: 8px;
-                width: 50px !important;
-                height: 50px !important;
+                margin-bottom: 6px;
+                width: 42px !important;
+                height: 42px !important;
             }
 
             .channel-name {
-                font-size: 0.85rem;
+                font-size: 0.8rem;
                 width: 100%;
                 text-align: center;
+                white-space: normal; /* নাম বড় হলে নিচে নেমে আসবে, কেটে যাবে না */
+                display: -webkit-box;
+                -webkit-line-clamp: 2; /* সর্বোচ্চ দুই লাইনে দেখাবে */
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
         }
 
@@ -263,7 +273,7 @@
                 <input type="text" id="search" class="search-bar" placeholder="🔍 সার্চ করুন চ্যানেল...">
             </div>
             <ul id="channelList" class="channel-list">
-                <p style="padding: 20px; color: #ff007f; text-align: center; font-weight: 500; animation: pulse 1.5s infinite;">চ্যানেল লোড হচ্ছে...</p>
+                <p style="padding: 20px; color: #ff007f; text-align: center; font-weight: 500;">চ্যানেল লোড হচ্ছে...</p>
             </ul>
         </div>
     </div>
