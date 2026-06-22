@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Auto-Fit Rotate IPTV Player</title>
+    <title>Immersive Fullscreen IPTV</title>
     <link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet" />
     <link href="https://unpkg.com/@videojs/themes@1.0.1/dist/city/index.css" rel="stylesheet">
     
@@ -65,11 +65,6 @@
             font-size: 0.95rem;
         }
 
-        .search-bar:focus {
-            border-color: #e50914;
-            background-color: #2a2a2a;
-        }
-
         .channel-list {
             flex: 1;
             overflow-y: auto;
@@ -127,12 +122,12 @@
             height: 100% !important;
         }
         
-        /* ⚡ ভিডিও স্ট্রেচ বা অটো-ফিট করার জন্য সিএসএস ⚡ */
+        /* ভিডিও স্ট্রেচ করে ডিসপ্লে ফিট করার ম্যাজিক */
         .video-js video {
             object-fit: fill !important; 
         }
 
-        /* --- RESPONSIVE FOR MOBILE (PORTRAIT - সোজা অবস্থা) --- */
+        /* --- RESPONSIVE FOR MOBILE (PORTRAIT) --- */
         @media (max-width: 768px) and (orientation: portrait) {
             body {
                 flex-direction: column;
@@ -144,7 +139,7 @@
 
             .main-player {
                 width: 100%;
-                height: 35vh; /* সোজা থাকলে ৩৫% জায়গা জুড়ে ভিডিও থাকবে */
+                height: 35vh;
                 flex: none;
             }
 
@@ -175,42 +170,26 @@
             }
         }
 
-        /* 🚨 ল্যান্ডস্কেপ ম্যাজিক: মোবাইল ঘুরালে (Landscape) চ্যানেল লিস্ট সম্পূর্ণ হাইড হয়ে যাবে 🚨 */
+        /* --- LANDSCAPE MODE (চ্যানেল লিস্ট সম্পূর্ণ হাইড এবং ফুল বডি ফিট) --- */
         @media (max-width: 950px) and (orientation: landscape) {
-            body, .container {
-                width: 100vw;
-                height: 100vh;
-                padding: 0;
-                margin: 0;
-            }
-            
-            /* মোবাইল ঘুরালে চ্যানেল সাইডবার বাটনসহ হাইড হয়ে যাবে */
             .sidebar {
                 display: none !important; 
             }
 
-            /* প্লেয়ারটি পুরো স্ক্রিন দখল করবে */
             .main-player {
                 width: 100vw !important;
                 height: 100vh !important;
                 position: fixed;
                 top: 0;
                 left: 0;
-                right: 0;
-                bottom: 0;
                 z-index: 9999;
-            }
-            
-            .video-js {
-                width: 100vw !important;
-                height: 100vh !important;
             }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
+    <div class="container" id="appContainer">
         <div class="main-player">
             <video id="iptv-player" class="video-js vjs-theme-city vjs-big-play-centered" controls preload="auto" playsinline>
                 <p class="vjs-no-js">To view this video please enable JavaScript.</p>
@@ -233,7 +212,6 @@
     <script>
         const M3U_URL = 'https://raw.githubusercontent.com/ahmedstore75/Iptvbdlive/refs/heads/main/mixiptvchannel.m3u'; 
 
-        // Initialize Player
         const player = videojs('iptv-player', {
             fluid: false,
             responsive: true,
@@ -245,7 +223,7 @@
 
         let allChannels = [];
 
-        // Parse M3U
+        // M3U Parser
         function parseM3U(data) {
             const lines = data.split('\n');
             const channels = [];
@@ -290,6 +268,9 @@
                     document.querySelectorAll('.channel-item').forEach(el => el.classList.remove('active'));
                     li.classList.add('active');
                     playStream(channel.url);
+                    
+                    // চ্যানেল প্লে করার সাথে সাথে ব্রাউজার ফুলস্ক্রিন করার চেষ্টা করবে
+                    triggerBrowserFullscreen();
                 });
 
                 listContainer.appendChild(li);
@@ -304,6 +285,31 @@
             player.src({ src: url, type: type });
             player.play().catch(e => console.log("Interaction required."));
         }
+
+        // ⚡ ব্রাউজারের অ্যাড্রেস বার হাইড করার আসল ম্যাজিক ফাংশন ⚡
+        function triggerBrowserFullscreen() {
+            const elem = document.documentElement; // পুরো ওয়েবপেজ ফুলস্ক্রিন হবে
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.webkitRequestFullscreen) { /* Safari / Chrome Mobile */
+                elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) { /* IE11 */
+                elem.msRequestFullscreen();
+            }
+        }
+
+        // স্ক্রিন রোটেট ট্র্যাক করে অটো-ফুলস্ক্রিন ট্রিগার
+        window.addEventListener("orientationchange", () => {
+            if (window.orientation === 90 || window.orientation === -90) {
+                // ল্যান্ডস্কেপ হলে অ্যাড্রেস বার তাড়াতে ফুলস্ক্রিন অন হবে
+                setTimeout(triggerBrowserFullscreen, 300);
+            } else {
+                // সোজা করলে ফুলস্ক্রিন থেকে বের হয়ে আসবে
+                if (document.exitFullscreen) {
+                    document.exitFullscreen().catch(() => {});
+                }
+            }
+        });
 
         // Fetch Data
         fetch(M3U_URL)
