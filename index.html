@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>True Fullscreen IPTV</title>
+    <title>100% True Fullscreen IPTV</title>
     <link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet" />
     <link href="https://unpkg.com/@videojs/themes@1.0.1/dist/city/index.css" rel="stylesheet">
     
@@ -117,18 +117,27 @@
             overflow: hidden;
         }
 
-        /* 🚨 কালো দাগ দূর করার জন্য প্লেয়ারের সাইজ ও অবজেক্ট ফিক্স 🚨 */
         .video-js {
             width: 100% !important;
             height: 100% !important;
         }
-        
-        /* এই কোডটি ভিডিওর চারপাশের সব কালো অংশ কেটে পুরো স্ক্রিনে জোরপূর্বক ফিট করবে */
+
+        /* 🚨 নরমাল মোডে ভিডিওর চারপাশের কালো দাগ দূর করার জন্য 🚨 */
         .video-js video, 
         .vjs-tech {
-            object-fit: cover !important; /* কালো দাগ দূর করতে 'cover' ব্যবহার করা হয়েছে, চাইলে 'fill' ও দিতে পারেন */
+            object-fit: fill !important; /* স্ক্রিন পুরোপুরি ফিল করার জন্য fill ব্যবহার করা হয়েছে */
             width: 100% !important;
             height: 100% !important;
+        }
+
+        /* 🚨 আসল ম্যাজিক: ফুলস্ক্রিন মোডে ব্রাউজারের ভেতরের কালো দাগ দূর করার জন্য 🚨 */
+        .video-js:fullscreen .vjs-tech,
+        .video-js:-webkit-full-screen .vjs-tech,
+        .video-js::-webkit-media-controls-panel,
+        video:-webkit-full-screen {
+            object-fit: fill !important; /* ফুলস্ক্রিন হলেও ভিডিওটি জোরপূর্বক পুরো ডিসপ্লেতে স্ট্রেচ হবে */
+            width: 100vw !important;
+            height: 100vh !important;
         }
 
         /* --- RESPONSIVE FOR MOBILE (PORTRAIT - সোজা অবস্থা) --- */
@@ -143,7 +152,7 @@
 
             .main-player {
                 width: 100%;
-                height: 35vh; /* সোজা অবস্থায় ভিডিওর উচ্চতা */
+                height: 35vh;
                 flex: none;
             }
 
@@ -174,7 +183,7 @@
             }
         }
 
-        /* --- LANDSCAPE MODE (চ্যানেল লিস্ট সম্পূর্ণ হাইড এবং ফুল ডিসপ্লে ফিট) --- */
+        /* --- LANDSCAPE MODE --- */
         @media (max-width: 950px) and (orientation: landscape) {
             .sidebar {
                 display: none !important; 
