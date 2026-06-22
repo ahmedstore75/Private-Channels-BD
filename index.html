@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Immersive Fullscreen IPTV</title>
+    <title>Smart Auto-Rotate IPTV</title>
     <link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet" />
     <link href="https://unpkg.com/@videojs/themes@1.0.1/dist/city/index.css" rel="stylesheet">
     
@@ -122,12 +122,12 @@
             height: 100% !important;
         }
         
-        /* ভিডিও স্ট্রেচ করে ডিসপ্লে ফিট করার ম্যাজিক */
+        /* ভিডিও স্ট্রেচ বা অটো-ফিট করার সিএসএস */
         .video-js video {
             object-fit: fill !important; 
         }
 
-        /* --- RESPONSIVE FOR MOBILE (PORTRAIT) --- */
+        /* --- RESPONSIVE FOR MOBILE (PORTRAIT - সোজা অবস্থা) --- */
         @media (max-width: 768px) and (orientation: portrait) {
             body {
                 flex-direction: column;
@@ -170,7 +170,7 @@
             }
         }
 
-        /* --- LANDSCAPE MODE (চ্যানেল লিস্ট সম্পূর্ণ হাইড এবং ফুল বডি ফিট) --- */
+        /* --- LANDSCAPE MODE (ফুল ডিসপ্লে ফিট) --- */
         @media (max-width: 950px) and (orientation: landscape) {
             .sidebar {
                 display: none !important; 
@@ -189,7 +189,7 @@
 </head>
 <body>
 
-    <div class="container" id="appContainer">
+    <div class="container">
         <div class="main-player">
             <video id="iptv-player" class="video-js vjs-theme-city vjs-big-play-centered" controls preload="auto" playsinline>
                 <p class="vjs-no-js">To view this video please enable JavaScript.</p>
@@ -223,7 +223,7 @@
 
         let allChannels = [];
 
-        // M3U Parser
+        // Parse M3U
         function parseM3U(data) {
             const lines = data.split('\n');
             const channels = [];
@@ -268,9 +268,6 @@
                     document.querySelectorAll('.channel-item').forEach(el => el.classList.remove('active'));
                     li.classList.add('active');
                     playStream(channel.url);
-                    
-                    // চ্যানেল প্লে করার সাথে সাথে ব্রাউজার ফুলস্ক্রিন করার চেষ্টা করবে
-                    triggerBrowserFullscreen();
                 });
 
                 listContainer.appendChild(li);
@@ -286,27 +283,23 @@
             player.play().catch(e => console.log("Interaction required."));
         }
 
-        // ⚡ ব্রাউজারের অ্যাড্রেস বার হাইড করার আসল ম্যাজিক ফাংশন ⚡
-        function triggerBrowserFullscreen() {
-            const elem = document.documentElement; // পুরো ওয়েবপেজ ফুলস্ক্রিন হবে
-            if (elem.requestFullscreen) {
-                elem.requestFullscreen();
-            } else if (elem.webkitRequestFullscreen) { /* Safari / Chrome Mobile */
-                elem.webkitRequestFullscreen();
-            } else if (elem.msRequestFullscreen) { /* IE11 */
-                elem.msRequestFullscreen();
-            }
-        }
-
-        // স্ক্রিন রোটেট ট্র্যাক করে অটো-ফুলস্ক্রিন ট্রিগার
-        window.addEventListener("orientationchange", () => {
-            if (window.orientation === 90 || window.orientation === -90) {
-                // ল্যান্ডস্কেপ হলে অ্যাড্রেস বার তাড়াতে ফুলস্ক্রিন অন হবে
-                setTimeout(triggerBrowserFullscreen, 300);
+        // ⚡ ক্রপ/ফুলস্ক্রিন বাটনে ক্লিক করলে অটো রোটেট ও অ্যাড্রেস বার হাইড করার ম্যাজিক ফাংশন ⚡
+        player.on('fullscreenchange', () => {
+            if (player.isFullscreen()) {
+                // ব্রাউজারের অ্যাড্রেস বার লুকানোর জন্য পুরো পেজ ফুলস্ক্রিন রিকোয়েস্ট
+                const elem = document.documentElement;
+                if (elem.requestFullscreen) {
+                    elem.requestFullscreen().then(() => {
+                        // স্ক্রিন অটোমেটিক ল্যান্ডস্কেপ (কাত) করার কমান্ড
+                        if (screen.orientation && screen.orientation.lock) {
+                            screen.orientation.lock('landscape').catch(err => console.log("Orientation lock not supported or blocked."));
+                        }
+                    });
+                }
             } else {
-                // সোজা করলে ফুলস্ক্রিন থেকে বের হয়ে আসবে
-                if (document.exitFullscreen) {
-                    document.exitFullscreen().catch(() => {});
+                // ফুলস্ক্রিন থেকে বের হলে স্ক্রিন আবার সোজা (Portrait) হয়ে যাবে
+                if (screen.orientation && screen.orientation.unlock) {
+                    screen.orientation.unlock();
                 }
             }
         });
