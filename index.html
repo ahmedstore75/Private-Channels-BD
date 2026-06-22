@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Screen-Fit IPTV Player</title>
-    <!-- Video.js Theme -->
+    <title>Auto-Fit Rotate IPTV Player</title>
     <link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet" />
     <link href="https://unpkg.com/@videojs/themes@1.0.1/dist/city/index.css" rel="stylesheet">
     
@@ -52,7 +51,6 @@
             margin-bottom: 15px;
             color: #e50914;
             font-weight: 700;
-            letter-spacing: 0.5px;
             text-transform: uppercase;
         }
 
@@ -65,13 +63,11 @@
             color: #fff;
             outline: none;
             font-size: 0.95rem;
-            transition: all 0.3s ease;
         }
 
         .search-bar:focus {
             border-color: #e50914;
             background-color: #2a2a2a;
-            box-shadow: 0 0 8px rgba(229, 9, 20, 0.4);
         }
 
         .channel-list {
@@ -82,11 +78,6 @@
             -webkit-overflow-scrolling: touch;
         }
 
-        /* Scrollbar */
-        .channel-list::-webkit-scrollbar { width: 6px; }
-        .channel-list::-webkit-scrollbar-thumb { background-color: #333; border-radius: 10px; }
-        .channel-list::-webkit-scrollbar-thumb:hover { background-color: #e50914; }
-
         .channel-item {
             display: flex;
             align-items: center;
@@ -95,18 +86,11 @@
             cursor: pointer;
             border-radius: 8px;
             background-color: #1e1e1e;
-            border: 1px solid transparent;
             transition: all 0.2s ease-in-out;
-        }
-
-        .channel-item:hover {
-            background-color: #282828;
-            transform: translateX(3px);
         }
 
         .channel-item.active {
             background: linear-gradient(135deg, #e50914, #b20710);
-            border-color: #ff1e27;
             box-shadow: 0 4px 12px rgba(229, 9, 20, 0.3);
         }
 
@@ -117,7 +101,6 @@
             object-fit: cover;
             margin-right: 15px;
             background-color: #000;
-            border: 1px solid #333;
         }
 
         .channel-name {
@@ -139,51 +122,39 @@
             overflow: hidden;
         }
 
-        /* ⚡ স্ক্রিনফিট ম্যাজিক: ভিডিও ট্যাগকে জোরপূর্বক পুরো জায়গায় ফিট করানো হচ্ছে ⚡ */
         .video-js {
             width: 100% !important;
             height: 100% !important;
         }
         
-        /* ভিডিওর অরিজিনাল ব্ল্যাক বার কেটে পুরো স্ক্রিনে ফিট (Fill/Stretch) করার জন্য */
+        /* ⚡ ভিডিও স্ট্রেচ বা অটো-ফিট করার জন্য সিএসএস ⚡ */
         .video-js video {
             object-fit: fill !important; 
         }
 
-        /* --- RESPONSIVE FOR MOBILE & TABLET --- */
-        @media (max-width: 768px) {
+        /* --- RESPONSIVE FOR MOBILE (PORTRAIT - সোজা অবস্থা) --- */
+        @media (max-width: 768px) and (orientation: portrait) {
             body {
                 flex-direction: column;
             }
 
             .container {
-                flex-direction: column; /* ভিডিও উপরে, চ্যানেল নিচে */
+                flex-direction: column;
             }
 
             .main-player {
                 width: 100%;
-                height: 40vh; /* মোবাইলে ভিডিওর জন্য ৪০% জায়গা ফিক্সড */
+                height: 35vh; /* সোজা থাকলে ৩৫% জায়গা জুড়ে ভিডিও থাকবে */
                 flex: none;
             }
 
             .sidebar {
                 width: 100%;
-                height: 60vh;
+                height: 65vh;
                 border-right: none;
                 border-top: 1px solid #252525;
-                background-color: #0f0f0f;
             }
 
-            .sidebar-header {
-                padding: 12px 15px;
-            }
-
-            .sidebar-header h2 {
-                font-size: 1.1rem;
-                margin-bottom: 8px;
-            }
-
-            /* মোবাইলে ২-কলাম গ্রিড ভিউ */
             .channel-list {
                 display: grid;
                 grid-template-columns: repeat(2, 1fr);
@@ -201,42 +172,38 @@
             .channel-logo {
                 margin-right: 0;
                 margin-bottom: 8px;
-                width: 55px;
-                height: 55px;
-            }
-
-            .channel-name {
-                font-size: 0.85rem;
-                width: 100%;
             }
         }
 
-        /* LANDSCAPE MODE (মোবাইল ঘুরালে ফুল স্ক্রিন প্লেয়ার) */
-        @media (max-width: 900px) and (orientation: landscape) {
-            .container {
-                flex-direction: row;
+        /* 🚨 ল্যান্ডস্কেপ ম্যাজিক: মোবাইল ঘুরালে (Landscape) চ্যানেল লিস্ট সম্পূর্ণ হাইড হয়ে যাবে 🚨 */
+        @media (max-width: 950px) and (orientation: landscape) {
+            body, .container {
+                width: 100vw;
+                height: 100vh;
+                padding: 0;
+                margin: 0;
             }
-            .main-player {
-                height: 100%;
-                flex: 1;
-            }
+            
+            /* মোবাইল ঘুরালে চ্যানেল সাইডবার বাটনসহ হাইড হয়ে যাবে */
             .sidebar {
-                width: 260px;
-                height: 100%;
+                display: none !important; 
             }
-            .channel-list {
-                display: flex;
-                flex-direction: column;
+
+            /* প্লেয়ারটি পুরো স্ক্রিন দখল করবে */
+            .main-player {
+                width: 100vw !important;
+                height: 100vh !important;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                z-index: 9999;
             }
-            .channel-item {
-                flex-direction: row;
-                text-align: left;
-            }
-            .channel-logo {
-                margin-right: 10px;
-                margin-bottom: 0;
-                width: 40px;
-                height: 40px;
+            
+            .video-js {
+                width: 100vw !important;
+                height: 100vh !important;
             }
         }
     </style>
@@ -244,14 +211,12 @@
 <body>
 
     <div class="container">
-        <!-- Main Player -->
         <div class="main-player">
             <video id="iptv-player" class="video-js vjs-theme-city vjs-big-play-centered" controls preload="auto" playsinline>
                 <p class="vjs-no-js">To view this video please enable JavaScript.</p>
             </video>
         </div>
 
-        <!-- Sidebar -->
         <div class="sidebar">
             <div class="sidebar-header">
                 <h2>IPTV Premium</h2>
@@ -263,7 +228,6 @@
         </div>
     </div>
 
-    <!-- Video.js Script -->
     <script src="https://vjs.zencdn.net/8.10.0/video.js"></script>
 
     <script>
