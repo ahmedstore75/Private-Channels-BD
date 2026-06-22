@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Responsive IPTV Player</title>
+    <title>Premium IPTV Player</title>
     <link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet" />
+    <link href="https://unpkg.com/@videojs/themes@1.0.1/dist/city/index.css" rel="stylesheet">
+    
     <style>
         * {
             box-sizing: border-box;
@@ -14,91 +16,127 @@
         }
 
         body {
-            background-color: #141414;
+            background-color: #0d0d0d;
             color: #fff;
             display: flex;
             height: 100vh;
             overflow: hidden;
         }
 
-        /* Responsive Layout Container */
+        /* Container Setup */
         .container {
             display: flex;
             width: 100%;
             height: 100%;
         }
 
-        /* --- LAPTOP / DESKTOP SIDEBAR (DEFAULT) --- */
+        /* --- SIDEBAR STYLE (DESKTOP) --- */
         .sidebar {
-            width: 350px;
-            background-color: #1a1a1a;
+            width: 380px;
+            background-color: #151515;
             display: flex;
             flex-direction: column;
-            border-right: 1px solid #282828;
-            transition: all 0.3s ease;
+            border-right: 1px solid #252525;
             z-index: 10;
+            box-shadow: 5px 0 15px rgba(0,0,0,0.5);
         }
 
         .sidebar-header {
             padding: 20px;
-            background-color: #111;
-            border-bottom: 1px solid #282828;
+            background: linear-gradient(to bottom, #1a1a1a, #151515);
+            border-bottom: 1px solid #252525;
         }
 
         .sidebar-header h2 {
-            font-size: 1.3rem;
-            margin-bottom: 12px;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
             color: #e50914;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .search-container {
+            position: relative;
         }
 
         .search-bar {
             width: 100%;
-            padding: 12px;
-            border-radius: 6px;
+            padding: 12px 15px;
+            border-radius: 30px; /* Rounded pill style */
             border: 1px solid #333;
             background-color: #222;
             color: #fff;
             outline: none;
             font-size: 0.95rem;
+            transition: all 0.3s ease;
         }
 
+        .search-bar:focus {
+            border-color: #e50914;
+            background-color: #2a2a2a;
+            box-shadow: 0 0 8px rgba(229, 9, 20, 0.4);
+        }
+
+        /* Channel List Smooth Scroll */
         .channel-list {
             flex: 1;
             overflow-y: auto;
             list-style: none;
-            -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+            padding: 10px;
+            -webkit-overflow-scrolling: touch;
         }
 
-        .channel-item {
-            display: flex;
-            align-items: center;
-            padding: 14px 20px;
-            cursor: pointer;
-            border-bottom: 1px solid #222;
-            transition: background 0.2s ease;
+        /* Custom Scrollbar */
+        .channel-list::-webkit-scrollbar {
+            width: 6px;
         }
-
-        .channel-item:hover {
-            background-color: #262626;
+        .channel-list::-webkit-scrollbar-thumb {
+            background-color: #333;
+            border-radius: 10px;
         }
-
-        .channel-item.active {
+        .channel-list::-webkit-scrollbar-thumb:hover {
             background-color: #e50914;
         }
 
+        /* Channel Item Style */
+        .channel-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            border-radius: 8px;
+            background-color: #1e1e1e;
+            border: 1px solid transparent;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .channel-item:hover {
+            background-color: #282828;
+            transform: translateX(3px);
+        }
+
+        .channel-item.active {
+            background: linear-gradient(135deg, #e50914, #b20710);
+            border-color: #ff1e27;
+            box-shadow: 0 4px 12px rgba(229, 9, 20, 0.3);
+        }
+
         .channel-logo {
-            width: 45px;
-            height: 45px;
-            border-radius: 6px;
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
             object-fit: cover;
             margin-right: 15px;
             background-color: #000;
             border: 1px solid #333;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
         }
 
         .channel-name {
-            font-size: 1rem;
-            font-weight: 500;
+            font-size: 0.95rem;
+            font-weight: 600;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -114,35 +152,59 @@
             position: relative;
         }
 
-        /* Make Video.js fluid and fill container */
         .video-js {
             width: 100% !important;
             height: 100% !important;
         }
 
-        /* --- MOBILE & TABLET ADAPTATION (Media Queries) --- */
+        /* --- CUSTOM MOBILE ZOOM BUTTON --- */
+        .mobile-zoom-btn {
+            display: none; /* Desktop এ হাইড থাকবে */
+            position: absolute;
+            bottom: 70px;
+            right: 20px;
+            background: rgba(229, 9, 20, 0.9);
+            color: white;
+            border: none;
+            padding: 12px 18px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            z-index: 99;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            cursor: pointer;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.2s;
+        }
+        
+        .mobile-zoom-btn:active {
+            transform: scale(0.9);
+        }
+
+        /* --- RESPONSIVE LAYOUT FOR MOBILE & TABLET --- */
         @media (max-width: 768px) {
             body {
                 flex-direction: column;
             }
 
             .container {
-                flex-direction: column-reverse; /* Video on top, channels on bottom */
+                flex-direction: column; /* ভিডিও উপরে, চ্যানেল নিচে */
             }
 
-            /* Video takes fixed aspect ratio or upper half on mobile */
             .main-player {
                 width: 100%;
-                height: 40vh; /* Devotes 40% screen to video when browsing channels */
+                height: 35vh; /* স্ক্রিনের ৩৫% ভিডিওর জন্য */
                 flex: none;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.5);
             }
 
-            /* Sidebar changes to a bottom channel selector */
             .sidebar {
                 width: 100%;
-                height: 60vh;
+                height: 65vh;
                 border-right: none;
-                border-top: 1px solid #282828;
+                border-top: 1px solid #252525;
+                background-color: #0f0f0f;
             }
 
             .sidebar-header {
@@ -154,17 +216,41 @@
                 margin-bottom: 8px;
             }
 
-            .channel-item {
-                padding: 12px 15px; /* Slightly larger targets for thumbs */
+            /* মোবাইলে চ্যানেলগুলো সুন্দর ২-কলাম গ্রিড আকারে দেখাবে */
+            .channel-list {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+                padding: 12px;
             }
-            
+
+            .channel-item {
+                margin-bottom: 0;
+                padding: 10px;
+                flex-direction: column;
+                text-align: center;
+                justify-content: center;
+            }
+
             .channel-logo {
-                width: 40px;
-                height: 40px;
+                margin-right: 0;
+                margin-bottom: 8px;
+                width: 55px;
+                height: 55px;
+            }
+
+            .channel-name {
+                font-size: 0.85rem;
+                width: 100%;
+            }
+
+            /* মোবাইলে জুম বাটন শো করবে */
+            .mobile-zoom-btn {
+                display: flex;
             }
         }
 
-        /* Landscape view mobile optimization (When user rotates phone) */
+        /* LANDSCAPE MODE OPTIMIZATION (মোবাইল ঘুরালে ফুল প্লেয়ার হবে) */
         @media (max-width: 900px) and (orientation: landscape) {
             .container {
                 flex-direction: row;
@@ -174,8 +260,25 @@
                 flex: 1;
             }
             .sidebar {
-                width: 250px;
+                width: 260px;
                 height: 100%;
+            }
+            .channel-list {
+                display: flex;
+                flex-direction: column;
+            }
+            .channel-item {
+                flex-direction: row;
+                text-align: left;
+            }
+            .channel-logo {
+                margin-right: 10px;
+                margin-bottom: 0;
+                width: 40px;
+                height: 40px;
+            }
+            .mobile-zoom-btn {
+                bottom: 60px;
             }
         }
     </style>
@@ -183,41 +286,49 @@
 <body>
 
     <div class="container">
-        <div class="sidebar">
-            <div class="sidebar-header">
-                <h2>IPTV Mobile & Web</h2>
-                <input type="text" id="search" class="search-bar" placeholder="Search channels...">
-            </div>
-            <ul id="channelList" class="channel-list">
-                <p style="padding: 20px; color: #aaa; text-align: center;">Loading channels...</p>
-            </ul>
-        </div>
-
         <div class="main-player">
-            <video id="iptv-player" class="video-js vjs-default-skin vjs-big-play-centered" controls preload="auto" playsinline>
+            <video id="iptv-player" class="video-js vjs-theme-city vjs-big-play-centered" controls preload="auto" playsinline>
                 <p class="vjs-no-js">To view this video please enable JavaScript.</p>
             </video>
+            
+            <button class="mobile-zoom-btn" id="zoomBtn">
+                <span>⛶</span> জুম ফুলস্ক্রিন
+            </button>
+        </div>
+
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>IPTV Premium</h2>
+                <div class="search-container">
+                    <input type="text" id="search" class="search-bar" placeholder="🔍 সার্চ করুন চ্যানেল...">
+                </div>
+            </div>
+            <ul id="channelList" class="channel-list">
+                <p style="padding: 20px; color: #aaa; text-align: center;">চ্যানেল লোড হচ্ছে, অপেক্ষা করুন...</p>
+            </ul>
         </div>
     </div>
 
     <script src="https://vjs.zencdn.net/8.10.0/video.js"></script>
 
     <script>
-        // Use a stable sample M3U playlist (Change this to your personal stream link)
+        // M3U Playlist Link
         const M3U_URL = 'https://raw.githubusercontent.com/ahmedstore75/Iptvbdlive/refs/heads/main/mixiptvchannel.m3u'; 
 
-        // Initialize Player
+        // Initialize Video.js Player
         const player = videojs('iptv-player', {
             fluid: false,
             responsive: true,
+            playbackRates: [0.5, 1, 1.5, 2],
             controlBar: {
-                pictureInPictureToggle: true
+                pictureInPictureToggle: true,
+                volumePanel: { inline: false }
             }
         });
 
         let allChannels = [];
 
-        // Parse M3U standard
+        // Parse M3U
         function parseM3U(data) {
             const lines = data.split('\n');
             const channels = [];
@@ -230,7 +341,7 @@
                     if (nameIndex !== -1) currentChannel.name = line.substring(nameIndex + 1).trim();
                     
                     const logoMatch = line.match(/tvg-logo="([^"]+)"/);
-                    currentChannel.logo = logoMatch ? logoMatch[1] : 'https://via.placeholder.com/45x45?text=TV';
+                    currentChannel.logo = logoMatch ? logoMatch[1] : 'https://via.placeholder.com/60x60?text=TV';
                 } else if (line.startsWith('http')) {
                     currentChannel.url = line;
                     channels.push(currentChannel);
@@ -240,13 +351,13 @@
             return channels;
         }
 
-        // Render UI
+        // Render Channels to UI
         function renderChannels(channels) {
             const listContainer = document.getElementById('channelList');
             listContainer.innerHTML = '';
 
             if(channels.length === 0) {
-                listContainer.innerHTML = '<p style="padding: 20px; color: #aaa; text-align: center;">No results found</p>';
+                listContainer.innerHTML = '<p style="grid-column: span 2; padding: 20px; color: #aaa; text-align: center;">কোনো চ্যানেল পাওয়া যায়নি!</p>';
                 return;
             }
 
@@ -254,7 +365,7 @@
                 const li = document.createElement('li');
                 li.className = 'channel-item';
                 li.innerHTML = `
-                    <img class="channel-logo" src="${channel.logo}" onerror="this.src='https://via.placeholder.com/45x45?text=TV'">
+                    <img class="channel-logo" src="${channel.logo}" onerror="this.src='https://via.placeholder.com/60x60?text=Live+TV'">
                     <span class="channel-name">${channel.name || 'Live Stream'}</span>
                 `;
 
@@ -262,27 +373,23 @@
                     document.querySelectorAll('.channel-item').forEach(el => el.classList.remove('active'));
                     li.classList.add('active');
                     playStream(channel.url);
-
-                    // Optional mobile enhancement: Auto-fullscreen on channel click
-                    if (window.innerWidth <= 768) {
-                        player.requestFullscreen();
-                    }
                 });
 
                 listContainer.appendChild(li);
             });
         }
 
+        // Stream Player Function
         function playStream(url) {
             let type = 'video/mp4'; 
             if (url.includes('.m3u8')) type = 'application/x-mpegURL';
             else if (url.includes('.mpd')) type = 'application/dash+xml';
 
             player.src({ src: url, type: type });
-            player.play().catch(e => console.log("Playback interaction required."));
+            player.play().catch(e => console.log("User interaction required to play."));
         }
 
-        // Fetch execution
+        // Fetch Data
         fetch(M3U_URL)
             .then(res => res.text())
             .then(data => {
@@ -297,14 +404,23 @@
                 }
             })
             .catch(err => {
-                document.getElementById('channelList').innerHTML = '<p style="padding: 20px; color: #e50914; text-align: center;">Failed to load playlist.</p>';
+                document.getElementById('channelList').innerHTML = '<p style="grid-column: span 2; padding: 20px; color: #e50914; text-align: center;">প্লেলিস্ট লোড করতে ব্যর্থ হয়েছে।</p>';
             });
 
-        // Instant search filter
+        // Search Filter
         document.getElementById('search').addEventListener('input', (e) => {
             const query = e.target.value.toLowerCase();
             const filtered = allChannels.filter(ch => ch.name && ch.name.toLowerCase().includes(query));
             renderChannels(filtered);
+        });
+
+        // --- ZOOM / FULLSCREEN BUTTON ACTION ---
+        document.getElementById('zoomBtn').addEventListener('click', () => {
+            if (player.isFullscreen()) {
+                player.exitFullscreen();
+            } else {
+                player.requestFullscreen();
+            }
         });
     </script>
 </body>
