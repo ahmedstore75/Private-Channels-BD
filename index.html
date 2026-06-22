@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Smart Auto-Rotate IPTV</title>
+    <title>Perfect Screen-Fit IPTV</title>
     <link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet" />
     <link href="https://unpkg.com/@videojs/themes@1.0.1/dist/city/index.css" rel="stylesheet">
     
@@ -121,13 +121,26 @@
             width: 100% !important;
             height: 100% !important;
         }
-        
-        /* ভিডিও স্ট্রেচ বা অটো-ফিট করার সিএসএস */
-        .video-js video {
+
+        /* ভিডিওর কালো দাগ সম্পূর্ণ দূর করার সিএসএস */
+        .video-js video, 
+        .vjs-tech {
             object-fit: fill !important; 
+            width: 100% !important;
+            height: 100% !important;
         }
 
-        /* --- RESPONSIVE FOR MOBILE (PORTRAIT - সোজা অবস্থা) --- */
+        /* ফুলস্ক্রিন মোডেও কালো দাগ বিন্দুমাত্র থাকবে না */
+        .video-js:fullscreen .vjs-tech,
+        .video-js:-webkit-full-screen .vjs-tech,
+        .video-js::-webkit-media-controls-panel,
+        video:-webkit-full-screen {
+            object-fit: fill !important; 
+            width: 100vw !important;
+            height: 100vh !important;
+        }
+
+        /* --- 📱 RESPONSIVE FOR MOBILE (PORTRAIT - সোজা অবস্থা) 📱 --- */
         @media (max-width: 768px) and (orientation: portrait) {
             body {
                 flex-direction: column;
@@ -150,27 +163,43 @@
                 border-top: 1px solid #252525;
             }
 
+            /* ⚡ ম্যাজিক গ্রিড: স্ক্রিনের মাপে পাশাপাশি নিখুঁতভাবে ২টি করে কলাম থাকবে ⚡ */
             .channel-list {
                 display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 10px;
-                padding: 12px;
+                grid-template-columns: repeat(2, 1fr); /* ২ কলাম ফিক্সড */
+                gap: 8px; /* বক্সগুলোর মাঝের ফাঁকা জায়গা কিছুটা কমানো হয়েছে */
+                padding: 10px;
+                width: 100%;
             }
 
+            /* চ্যানেল বক্স সাইজ ছোট এবং স্ক্রিন ফিট করা হয়েছে */
             .channel-item {
                 margin-bottom: 0;
-                padding: 10px;
+                padding: 8px;
                 flex-direction: column;
                 text-align: center;
+                justify-content: center;
+                height: auto;
             }
 
+            /* 🎯 লোগোর সাইজ ছোট করে পারফেক্ট করা হয়েছে (৪৫ পিক্সেল) */
             .channel-logo {
                 margin-right: 0;
-                margin-bottom: 8px;
+                margin-bottom: 6px;
+                width: 45px !important;
+                height: 45px !important;
+                border-radius: 6px;
+            }
+
+            /* চ্যানেলের নাম যাতে বক্সে সুন্দর দেখায় */
+            .channel-name {
+                font-size: 0.8rem;
+                width: 100%;
+                text-align: center;
             }
         }
 
-        /* --- LANDSCAPE MODE (ফুল ডিসপ্লে ফিট) --- */
+        /* --- LANDSCAPE MODE (মোবাইল ঘুরালে ফুলস্ক্রিন) --- */
         @media (max-width: 950px) and (orientation: landscape) {
             .sidebar {
                 display: none !important; 
@@ -283,21 +312,18 @@
             player.play().catch(e => console.log("Interaction required."));
         }
 
-        // ⚡ ক্রপ/ফুলস্ক্রিন বাটনে ক্লিক করলে অটো রোটেট ও অ্যাড্রেস বার হাইড করার ম্যাজিক ফাংশন ⚡
+        // ক্রপ/ফুলস্ক্রিন বাটন ক্লিক ইভেন্ট (অটো রোটেট + অ্যাড্রেস বার হাইড)
         player.on('fullscreenchange', () => {
             if (player.isFullscreen()) {
-                // ব্রাউজারের অ্যাড্রেস বার লুকানোর জন্য পুরো পেজ ফুলস্ক্রিন রিকোয়েস্ট
                 const elem = document.documentElement;
                 if (elem.requestFullscreen) {
                     elem.requestFullscreen().then(() => {
-                        // স্ক্রিন অটোমেটিক ল্যান্ডস্কেপ (কাত) করার কমান্ড
                         if (screen.orientation && screen.orientation.lock) {
-                            screen.orientation.lock('landscape').catch(err => console.log("Orientation lock not supported or blocked."));
+                            screen.orientation.lock('landscape').catch(err => console.log("Orientation lock blocked."));
                         }
                     });
                 }
             } else {
-                // ফুলস্ক্রিন থেকে বের হলে স্ক্রিন আবার সোজা (Portrait) হয়ে যাবে
                 if (screen.orientation && screen.orientation.unlock) {
                     screen.orientation.unlock();
                 }
