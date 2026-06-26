@@ -337,7 +337,7 @@
             "🌍 International", "🎓 Education"
         ];
 
-        // 🔄 আপনার প্রথম কোডের মূল M3U Parser (১০০% অপরিবর্তিত)
+        // 🔄 আপনার প্রথম কোডের মূল M3U Parser
         function parseM3U(data) {
             const lines = data.split('\n');
             const channels = [];
@@ -459,39 +459,43 @@
             renderChannels(filtered);
         }
 
-        // 🛠️ মডিফাইড গ্লোবাল প্লে ইঞ্জিন (http / https এবং সব ফরম্যাট অটো ডিটেক্ট করবে)
         function playStream(url) {
-            let type = 'application/x-mpegURL'; // ডিফল্ট লাইভ স্ট্রিমিং টাইপ (HLS)
+            let type = 'application/x-mpegURL'; 
             const lowerUrl = url.toLowerCase();
 
-            // ১. যদি লিংকে স্পেসিফিকভাবে .ts বা mpegts টাইপ থাকে (http বা https যাই হোক)
             if (lowerUrl.includes('.ts') || lowerUrl.includes('mpegts') || lowerUrl.includes(':ts')) {
                 type = 'video/mp2t';
-            } 
-            // ২. যদি লিংকে ড্যাশ বা mpd ফরম্যাট থাকে
-            else if (lowerUrl.includes('.mpd')) {
+            } else if (lowerUrl.includes('.mpd')) {
                 type = 'application/dash+xml';
-            }
-            // ৩. সাধারণ mp4 ভিডিওর জন্য
-            else if (lowerUrl.includes('.mp4')) {
+            } else if (lowerUrl.includes('.mp4')) {
                 type = 'video/mp4';
             }
-            // ৪. অন্য সব সাধারণ http/https লাইভ স্ট্রিমের জন্য HLS (application/x-mpegURL) বহাল থাকবে
 
             player.src({ src: url, type: type });
-            player.play().catch(e => console.log("Stream auto-play blocked or required interaction."));
+            player.play().catch(e => console.log("Stream auto-play blocked."));
         }
 
+        // 🛠️ মডিফাইড ফুলস্ক্রিন ও সিস্টেম নেভিগেশন হাইড লজিক (Immersive Mode)
         player.on('fullscreenchange', () => {
             if (player.isFullscreen()) {
                 const elem = document.documentElement;
+                
+                // নেভিগেশন বাটন ও স্ট্যাটাস বার হাইড করার জন্য উন্নত রিকোয়েস্ট (navigationUI: "hide")
                 if (elem.requestFullscreen) {
-                    elem.requestFullscreen().then(() => {
+                    elem.requestFullscreen({ navigationUI: "hide" }).then(() => {
                         if (screen.orientation && screen.orientation.lock) {
                             screen.orientation.lock('landscape').catch(err => console.log("Orientation lock blocked."));
                         }
                     });
+                } else if (elem.webkitRequestFullscreen) { /* Safari / iOS */
+                    elem.webkitRequestFullscreen({ navigationUI: "hide" });
                 }
+
+                // ব্যাকআপ হিসেবে বাটন হাইড করার সিকিউরিটি টিউনিং
+                setTimeout(() => {
+                    window.scrollTo(0, 1);
+                }, 300);
+
             } else {
                 if (screen.orientation && screen.orientation.unlock) {
                     screen.orientation.unlock();
