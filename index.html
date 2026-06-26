@@ -331,13 +331,14 @@
         let allChannels = [];
         let currentCategory = 'all';
 
+        // 🎯 আপনার দেওয়া ফিক্সড ক্যাটাগরি লিস্ট
         const myCategories = [
             "all", "🇧🇩 Bangla", "📰 News", "⚽ Sports", "🎬 Movies", 
             "🎞 Series", "🎵 Music", "👶 Kids", "🕌 Islamic", 
             "🌍 International", "🎓 Education"
         ];
 
-        // 🔄 আপনার প্রথম কোডের মূল M3U Parser
+        // 🔄 আপনার প্রথম কোডের হুবহু সেই মূল M3U Parser (যাতে ১ লাইনেরও কোনো পরিবর্তন নেই)
         function parseM3U(data) {
             const lines = data.split('\n');
             const channels = [];
@@ -365,6 +366,7 @@
             return channels;
         }
 
+        // ক্যাটাগরি ট্যাব তৈরি
         function renderCategories() {
             const catContainer = document.getElementById('categoryContainer');
             catContainer.innerHTML = '';
@@ -390,6 +392,7 @@
             filterAndRender();
         }
 
+        // চ্যানেল লিস্ট রেন্ডর
         function renderChannels(channels) {
             const listContainer = document.getElementById('channelList');
             listContainer.innerHTML = '';
@@ -417,10 +420,12 @@
             });
         }
 
+        // নাম-ম্যাচিং ফিল্টার ইঞ্জিন (ক্যাটাগরির নাম অনুযায়ী চ্যানেল ফিল্টার করবে)
         function filterAndRender() {
             let filtered = allChannels;
 
             if (currentCategory !== 'all') {
+                // ইমোজি ছাড়া পিওর নাম নেওয়া
                 const pureCatName = currentCategory.replace(/[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD00-\uDFFF]/g, '').trim().toLowerCase();
                 
                 filtered = allChannels.filter(ch => {
@@ -441,6 +446,7 @@
             renderChannels(filtered);
         }
 
+        // গ্লোবাল সার্চ ইঞ্জিন (যেকোনো ট্যাব থেকে 'All' এ গিয়ে নিখুঁত সার্চ করবে)
         function handleGlobalSearch() {
             const searchQuery = document.getElementById('search').value.toLowerCase().trim();
             let filtered = allChannels;
@@ -460,41 +466,23 @@
         }
 
         function playStream(url) {
-            let type = 'application/x-mpegURL'; 
-            const lowerUrl = url.toLowerCase();
-
-            if (lowerUrl.includes('.ts') || lowerUrl.includes('mpegts') || lowerUrl.includes(':ts')) {
-                type = 'video/mp2t';
-            } else if (lowerUrl.includes('.mpd')) {
-                type = 'application/dash+xml';
-            } else if (lowerUrl.includes('.mp4')) {
-                type = 'video/mp4';
-            }
+            let type = 'video/mp4'; 
+            if (url.includes('.m3u8')) type = 'application/x-mpegURL';
+            else if (url.includes('.mpd')) type = 'application/dash+xml';
 
             player.src({ src: url, type: type });
-            player.play().catch(e => console.log("Stream auto-play blocked."));
+            player.play().catch(e => console.log("Interaction required."));
         }
 
-        // 🛠️ ১০০% ওয়ার্কিং ফুলস্ক্রিন ও অটো-নেভিগেশন হাইড লজিক (Immersive Sticky Mode)
         player.on('fullscreenchange', () => {
             if (player.isFullscreen()) {
-                const playerContainer = document.querySelector('.main-player');
-                
-                // ১. উন্নত ফুলস্ক্রিন API রান করা (নেভিগেশন হাইড করার জন্য ট্রু রিকোয়েস্ট)
-                if (playerContainer.requestFullscreen) {
-                    playerContainer.requestFullscreen({ navigationUI: "hide" }).catch(() => {});
-                }
-
-                // ২. মোবাইল স্ক্রিন ল্যান্ডস্কেপ মোডে জোরপূর্বক লক করা
-                if (screen.orientation && screen.orientation.lock) {
-                    screen.orientation.lock('landscape').catch(() => {});
-                }
-
-                // ৩. অ্যান্ড্রয়েড নেভিগেশনাল জেসচার ও বাটন হাইড করার সিকিউরিটি প্রোটোকল
-                if (window.navigator && window.navigator.userAgent.includes('Android')) {
-                    setTimeout(() => {
-                        window.scrollTo(0, 1);
-                    }, 500);
+                const elem = document.documentElement;
+                if (elem.requestFullscreen) {
+                    elem.requestFullscreen().then(() => {
+                        if (screen.orientation && screen.orientation.lock) {
+                            screen.orientation.lock('landscape').catch(err => console.log("Orientation lock blocked."));
+                        }
+                    });
                 }
             } else {
                 if (screen.orientation && screen.orientation.unlock) {
@@ -507,7 +495,7 @@
         fetch(M3U_URL)
             .then(res => res.text())
             .then(data => {
-                allChannels = parseM3U(data);
+                allChannels = parseM3U(data); // আপনার প্রথম কোডের আসল ফাংশন ডেটা প্রসেস করছে
                 renderCategories(); 
                 renderChannels(allChannels);
                 
