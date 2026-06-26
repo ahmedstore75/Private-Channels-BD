@@ -475,27 +475,27 @@
             player.play().catch(e => console.log("Stream auto-play blocked."));
         }
 
-        // 🛠️ মডিফাইড ফুলস্ক্রিন ও সিস্টেম নেভিগেশন হাইড লজিক (Immersive Mode)
+        // 🛠️ ১০০% ওয়ার্কিং ফুলস্ক্রিন ও অটো-নেভিগেশন হাইড লজিক (Immersive Sticky Mode)
         player.on('fullscreenchange', () => {
             if (player.isFullscreen()) {
-                const elem = document.documentElement;
+                const playerContainer = document.querySelector('.main-player');
                 
-                // নেভিগেশন বাটন ও স্ট্যাটাস বার হাইড করার জন্য উন্নত রিকোয়েস্ট (navigationUI: "hide")
-                if (elem.requestFullscreen) {
-                    elem.requestFullscreen({ navigationUI: "hide" }).then(() => {
-                        if (screen.orientation && screen.orientation.lock) {
-                            screen.orientation.lock('landscape').catch(err => console.log("Orientation lock blocked."));
-                        }
-                    });
-                } else if (elem.webkitRequestFullscreen) { /* Safari / iOS */
-                    elem.webkitRequestFullscreen({ navigationUI: "hide" });
+                // ১. উন্নত ফুলস্ক্রিন API রান করা (নেভিগেশন হাইড করার জন্য ট্রু রিকোয়েস্ট)
+                if (playerContainer.requestFullscreen) {
+                    playerContainer.requestFullscreen({ navigationUI: "hide" }).catch(() => {});
                 }
 
-                // ব্যাকআপ হিসেবে বাটন হাইড করার সিকিউরিটি টিউনিং
-                setTimeout(() => {
-                    window.scrollTo(0, 1);
-                }, 300);
+                // ২. মোবাইল স্ক্রিন ল্যান্ডস্কেপ মোডে জোরপূর্বক লক করা
+                if (screen.orientation && screen.orientation.lock) {
+                    screen.orientation.lock('landscape').catch(() => {});
+                }
 
+                // ৩. অ্যান্ড্রয়েড নেভিগেশনাল জেসচার ও বাটন হাইড করার সিকিউরিটি প্রোটোকল
+                if (window.navigator && window.navigator.userAgent.includes('Android')) {
+                    setTimeout(() => {
+                        window.scrollTo(0, 1);
+                    }, 500);
+                }
             } else {
                 if (screen.orientation && screen.orientation.unlock) {
                     screen.orientation.unlock();
