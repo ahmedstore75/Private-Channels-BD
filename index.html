@@ -239,7 +239,7 @@
             text-overflow: ellipsis;
         }
 
-        /* --- 🌟 PREMIUM ROUNDED PLAYER AREA (UPDATED FOR FULL STRETCH) --- */
+        /* --- 🌟 PREMIUM ROUNDED PLAYER AREA (TOTAL BLACK BAR REMOVAL) --- */
         .main-player {
             flex: 1;
             display: flex;
@@ -259,19 +259,28 @@
             background: #000;
         }
 
-        /* Plyr প্লেয়ার এবং এর ভেতরের উইন্ডো জোর করে ফুল স্ক্রিন করা হলো */
-        .plyr, .plyr__video-wrapper {
+        /* Plyr এর ডিফল্ট সাইজিং ও অনুপাত ওভাররাইড করা হলো */
+        .plyr {
             width: 100% !important;
             height: 100% !important;
             max-width: 100% !important;
             max-height: 100% !important;
         }
 
-        /* কোনো ক্রপ ছাড়া চারপাশের কালো বর্ডার দূর করে স্ট্রেচ ফিট করার ম্যাজিক লাইন */
-        .plyr__video-wrapper video {
+        /* Plyr এর ভেতরের বক্সের অ্যাসপেক্ট রেশিও ট্রিকস নিষ্ক্রিয় করা হলো */
+        .plyr__video-wrapper {
             width: 100% !important;
             height: 100% !important;
-            object-fit: fill !important; 
+            padding-bottom: 0 !important; /* Plyr-এর ডিফল্ট Aspect Ratio প্যাডিং রিমুভ */
+            aspect-ratio: auto !important;
+        }
+
+        /* ভিডিওকে সম্পূর্ণ কন্টেইনার জুড়ে জোর করে স্ট্রেচ করার মূল সিএসএস */
+        .plyr__video-wrapper video,
+        .plyr video {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: fill !important; /* কোন ক্রপ বা বর্ডার ছাড়া ফুল ফিট */
         }
 
         /* --- 📱 RESPONSIVE FOR MOBILE --- */
@@ -386,7 +395,7 @@
     <script>
         const M3U_URL = 'https://raw.githubusercontent.com/ahmedstore75/Iptvbdlive/refs/heads/main/mixiptvchannel.m3u'; 
 
-        // 🌟 NEW: Initialize Plyr
+        // Plyr কনফিগারেশন সেটআপ
         const videoElement = document.getElementById('iptv-player');
         const player = new Plyr(videoElement, {
             controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'fullscreen'],
@@ -526,7 +535,7 @@
             renderChannels(filtered);
         }
 
-        // 🌟 NEW: Modern Stream Player Logic (HLS + Plyr)
+        // 🌟 Modern Stream Player Logic (HLS + Plyr)
         function playStream(url) {
             if (hlsPlayer) {
                 hlsPlayer.destroy();
