@@ -239,7 +239,7 @@
             text-overflow: ellipsis;
         }
 
-        /* --- 🌟 PREMIUM ROUNDED PLAYER AREA (UPDATED FOR PLYR) --- */
+        /* --- 🌟 PREMIUM ROUNDED PLAYER AREA (UPDATED FOR FULL STRETCH) --- */
         .main-player {
             flex: 1;
             display: flex;
@@ -259,13 +259,19 @@
             background: #000;
         }
 
-        .plyr {
-            width: 100%;
-            height: 100%;
+        /* Plyr প্লেয়ার এবং এর ভেতরের উইন্ডো জোর করে ফুল স্ক্রিন করা হলো */
+        .plyr, .plyr__video-wrapper {
+            width: 100% !important;
+            height: 100% !important;
+            max-width: 100% !important;
+            max-height: 100% !important;
         }
 
+        /* কোনো ক্রপ ছাড়া চারপাশের কালো বর্ডার দূর করে স্ট্রেচ ফিট করার ম্যাজিক লাইন */
         .plyr__video-wrapper video {
-            object-fit: contain; /* কোন ক্রপ ছাড়া অরিজিনাল রেশিওতে স্ক্রিনে ফিট হবে */
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: fill !important; 
         }
 
         /* --- 📱 RESPONSIVE FOR MOBILE --- */
