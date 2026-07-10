@@ -4,41 +4,340 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Premium Neon IPTV</title>
+    
     <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+    
     <style>
-        :root { --plyr-color-main: #ff007f; --bg-gradient: linear-gradient(135deg, #0f0c20 0%, #060608 100%); }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
-        body { background: var(--bg-gradient); color: #fff; height: 100vh; overflow: hidden; display: flex; }
-        .container { display: flex; width: 100%; height: 100%; }
-        
-        /* Sidebar Styling */
-        .sidebar { width: 380px; background: rgba(20, 20, 30, 0.85); backdrop-filter: blur(20px); display: flex; flex-direction: column; border-right: 1px solid rgba(255,255,255,0.1); }
-        .sidebar-header { padding: 20px; text-align: center; font-size: 1.5rem; font-weight: 800; background: linear-gradient(to right, #ff007f, #7928ca); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        
-        /* Search & Filter */
-        .toolbar { padding: 10px 15px; display: flex; gap: 10px; }
-        .search-bar { flex: 1; padding: 10px 15px; border-radius: 25px; border: 1px solid #443355; background: rgba(255,255,255,0.05); color: #fff; outline: none; transition: 0.3s; }
-        .search-bar:focus { border-color: #ff007f; box-shadow: 0 0 10px rgba(255,0,127,0.3); }
+        :root {
+            /* প্লেয়ারের ডিফল্ট কালার চেঞ্জ করে আমাদের নিয়ন পিংক করে দেওয়া হলো */
+            --plyr-color-main: #ff007f;
+        }
 
-        /* Channel List */
-        .channel-list { flex: 1; overflow-y: auto; padding: 10px; }
-        .channel-item { display: flex; align-items: center; padding: 12px; margin-bottom: 8px; border-radius: 15px; background: rgba(255,255,255,0.03); cursor: pointer; transition: 0.3s; border: 1px solid transparent; }
-        .channel-item:hover { background: rgba(255,255,255,0.1); transform: translateX(5px); border-color: #ff007f; }
-        .channel-item.active { background: linear-gradient(90deg, #ff007f, #7928ca); }
-        .channel-logo { width: 50px; height: 50px; border-radius: 10px; margin-right: 15px; object-fit: cover; background: #000; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
 
-        /* Player */
-        .main-player { flex: 1; display: flex; justify-content: center; align-items: center; padding: 20px; }
-        .video-container { width: 100%; height: 100%; border-radius: 20px; overflow: hidden; background: #000; box-shadow: 0 0 50px rgba(0,0,0,0.5); }
-        
-        /* Skeleton Animation */
-        .skeleton { animation: pulse 1.5s infinite; background: #222; }
-        @keyframes pulse { 0% { opacity: 0.6; } 50% { opacity: 0.3; } 100% { opacity: 0.6; } }
+        body {
+            background: linear-gradient(135deg, #0f0c20 0%, #060608 100%);
+            color: #fff;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
 
-        @media (max-width: 768px) {
+        .container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* --- SIDEBAR STYLE (DESKTOP) --- */
+        .sidebar {
+            width: 380px;
+            background: rgba(20, 20, 30, 0.75);
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+            z-index: 10;
+            box-shadow: -5px 0 25px rgba(0,0,0,0.7);
+        }
+
+        .sidebar-header {
+            padding: 15px 15px 10px 15px;
+            background: linear-gradient(to bottom, rgba(30, 25, 50, 0.5), rgba(20, 20, 30, 0.5));
+        }
+
+        .sidebar-header h2 {
+            font-size: 1.25rem;
+            background: linear-gradient(45deg, #ff007f, #7928ca);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        /* 🛠️ TOOLBAR (Equally Divided) */
+        .toolbar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 15px;
+            background: rgba(0, 0, 0, 0.2);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+        }
+
+        /* 🌐 ড্রপডাউন মেনু ডিজাইন (Left Side - 50%) */
+        .custom-dropdown {
+            flex: 1; 
+            position: relative;
+            min-width: 0; 
+        }
+
+        .dropdown-btn {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-btn span {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis; 
+        }
+
+        .dropdown-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #ff007f;
+            box-shadow: 0 0 10px rgba(255, 0, 127, 0.2);
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 110%;
+            left: 0;
+            width: 100%;
+            background: rgba(25, 20, 35, 0.95);
+            backdrop-filter: blur(15px);
+            max-height: 250px;
+            overflow-y: auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            border: 1px solid rgba(255,255,255,0.08);
+            z-index: 100;
+            padding: 5px 0;
+        }
+
+        .dropdown-content.show {
+            display: block;
+            animation: fadeInDown 0.2s ease-out forwards;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .dropdown-content::-webkit-scrollbar { width: 4px; }
+        .dropdown-content::-webkit-scrollbar-thumb {
+            background: #ff007f;
+            border-radius: 10px;
+        }
+
+        .dropdown-item {
+            padding: 10px 15px;
+            font-size: 0.85rem;
+            color: #ccc;
+            cursor: pointer;
+            transition: 0.2s;
+            border-left: 3px solid transparent;
+        }
+
+        .dropdown-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+        }
+
+        .dropdown-item.active {
+            background: linear-gradient(90deg, rgba(255,0,127,0.15) 0%, transparent 100%);
+            color: #fff;
+            border-left: 3px solid #ff007f;
+            font-weight: bold;
+        }
+
+        /* 🔍 সার্চ বার ডিজাইন (Right Side - 50%) */
+        .search-bar {
+            flex: 1; 
+            width: 100%;
+            padding: 8px 12px;
+            border-radius: 20px;
+            border: 1px solid #443355;
+            background-color: rgba(255, 255, 255, 0.07);
+            color: #fff;
+            outline: none;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+            min-width: 0;
+        }
+
+        .search-bar:focus {
+            border-color: #ff007f;
+            box-shadow: 0 0 12px rgba(255, 0, 127, 0.4);
+            background-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .channel-list {
+            flex: 1;
+            overflow-y: auto;
+            list-style: none;
+            padding: 10px 15px;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .channel-list::-webkit-scrollbar { width: 5px; }
+        .channel-list::-webkit-scrollbar-thumb {
+            background: #443355;
+            border-radius: 10px;
+        }
+
+        .channel-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 12px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            border-radius: 12px;
+            background-color: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.02);
+            transition: all 0.2s ease;
+        }
+
+        .channel-item:hover {
+            background-color: rgba(255, 255, 255, 0.08);
+            transform: translateY(-2px);
+            border-color: rgba(121, 40, 202, 0.4);
+        }
+
+        .channel-item.active {
+            background: linear-gradient(135deg, #ff007f, #7928ca);
+            box-shadow: 0 4px 15px rgba(255, 0, 127, 0.3);
+            border-color: transparent;
+        }
+
+        .channel-logo {
+            width: 45px;
+            height: 45px;
+            border-radius: 8px;
+            object-fit: cover;
+            margin-right: 12px;
+            background-color: #000;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .channel-name {
+            font-size: 0.9rem;
+            font-weight: 600;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* --- 🌟 PREMIUM ROUNDED PLAYER AREA (UPDATED FOR PLYR) --- */
+        .main-player {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            padding: 20px;
+        }
+
+        .video-container {
+            width: 100%;
+            height: 100%;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6), 0 0 30px rgba(255, 0, 127, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: #000;
+        }
+
+        .plyr {
+            width: 100%;
+            height: 100%;
+        }
+
+        .plyr__video-wrapper video {
+            object-fit: fill; /* ভিডিও ফুল স্ক্রিন জুড়ে দেখাবে */
+        }
+
+        /* --- 📱 RESPONSIVE FOR MOBILE --- */
+        @media (max-width: 768px) and (orientation: portrait) {
             body { flex-direction: column; }
-            .sidebar { width: 100%; height: 50%; }
-            .main-player { height: 50%; padding: 10px; }
+            .container { flex-direction: column; }
+
+            .main-player {
+                width: 100%;
+                height: 35vh;
+                flex: none;
+                padding: 10px;
+            }
+
+            .video-container { border-radius: 16px; }
+
+            .sidebar {
+                width: 100%;
+                height: 65vh;
+                border-right: none;
+                box-shadow: none;
+            }
+
+            .sidebar-header { padding: 10px; }
+            .toolbar { padding: 8px 10px; }
+
+            .channel-list {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr); 
+                gap: 10px; 
+                padding: 10px;
+            }
+
+            .channel-item {
+                margin-bottom: 0;
+                padding: 10px 5px;
+                flex-direction: column;
+                text-align: center;
+                justify-content: center;
+                height: 100px;
+            }
+
+            .channel-logo {
+                margin-right: 0;
+                margin-bottom: 8px;
+                width: 42px !important;
+                height: 42px !important;
+            }
+
+            .channel-name {
+                font-size: 0.8rem;
+                width: 100%;
+                white-space: normal;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
+        }
+
+        @media (max-width: 950px) and (orientation: landscape) {
+            .sidebar { display: none !important; }
+            .main-player {
+                width: 100vw !important;
+                height: 100vh !important;
+                padding: 0;
+                position: fixed;
+                top: 0;
+                left: 0;
+                z-index: 9999;
+            }
+            .video-container { border-radius: 0; border: none; }
         }
     </style>
 </head>
@@ -47,80 +346,241 @@
     <div class="container">
         <div class="main-player">
             <div class="video-container">
-                <video id="iptv-player" playsinline controls></video>
+                <video id="iptv-player" playsinline controls>
+                    <source src="" type="application/x-mpegURL">
+                </video>
             </div>
         </div>
+
         <div class="sidebar">
-            <div class="sidebar-header">LIVE STREAMING</div>
-            <div class="toolbar">
-                <input type="text" id="search" class="search-bar" placeholder="🔍 চ্যানেল খুঁজুন...">
+            <div class="sidebar-header">
+                <h2>IPTV Premium Live</h2>
             </div>
-            <ul id="channelList" class="channel-list"></ul>
+            
+            <div class="toolbar">
+                <div class="custom-dropdown">
+                    <button id="categoryBtn" class="dropdown-btn">
+                        <span>🌐 All Category</span> ▾
+                    </button>
+                    <div id="dropdownContent" class="dropdown-content"></div>
+                </div>
+
+                <input type="text" id="search" class="search-bar" placeholder="🔍 চ্যানেল সার্চ করুন...">
+            </div>
+
+            <ul id="channelList" class="channel-list">
+                <p style="padding: 20px; color: #ff007f; text-align: center; font-weight: 500;">চ্যানেল লোড হচ্ছে...</p>
+            </ul>
         </div>
     </div>
 
     <script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@1"></script>
-    <script>
-        const M3U_URL = 'https://raw.githubusercontent.com/ahmedstore75/Iptvbdlive/refs/heads/main/mixiptvchannel.m3u';
-        const video = document.getElementById('iptv-player');
-        const player = new Plyr(video, { autoplay: true });
-        let hls = new Hls();
-        let allChannels = [];
 
-        // Fetch & Parse
-        fetch(M3U_URL).then(res => res.text()).then(data => {
-            allChannels = parseM3U(data);
-            renderChannels(allChannels);
-            
-            // Auto Load Last Channel
-            const lastUrl = localStorage.getItem('lastUrl');
-            if(lastUrl) playStream(lastUrl);
-            else if(allChannels.length > 0) playStream(allChannels[0].url);
+    <script>
+        const M3U_URL = 'https://raw.githubusercontent.com/ahmedstore75/Iptvbdlive/refs/heads/main/mixiptvchannel.m3u'; 
+
+        // 🌟 NEW: Initialize Plyr
+        const videoElement = document.getElementById('iptv-player');
+        const player = new Plyr(videoElement, {
+            controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'fullscreen'],
+            autoplay: true
         });
+        let hlsPlayer = null; // HLS.js instance
+
+        let allChannels = [];
+        let currentCategory = 'All';
+        let dynamicCategories = ["All"]; 
 
         function parseM3U(data) {
             const lines = data.split('\n');
-            let channels = [];
-            for(let i=0; i<lines.length; i++) {
-                if(lines[i].startsWith('#EXTINF:')) {
-                    channels.push({
-                        name: lines[i].split(',')[1],
-                        logo: lines[i].match(/tvg-logo="([^"]+)"/)?.[1] || 'https://via.placeholder.com/60',
-                        url: lines[i+1]
-                    });
+            const channels = [];
+            let currentChannel = {};
+
+            for (let i = 0; i < lines.length; i++) {
+                const line = lines[i];
+                if (line.startsWith('#EXTINF:')) {
+                    const nameIndex = line.lastIndexOf(',');
+                    if (nameIndex !== -1) {
+                        currentChannel.name = line.substring(nameIndex + 1).trim();
+                    }
+                    
+                    const logoMatch = line.match(/tvg-logo="([^"]+)"/);
+                    currentChannel.logo = logoMatch ? logoMatch[1] : 'https://via.placeholder.com/60x60?text=TV';
+                    
+                    const groupMatch = line.match(/group-title="([^"]+)"/i);
+                    currentChannel.category = groupMatch ? groupMatch[1].trim() : 'Uncategorized';
+                    
+                } else if (line.startsWith('http')) {
+                    currentChannel.url = line.trim();
+                    channels.push(currentChannel);
+                    currentChannel = {};
                 }
             }
             return channels;
         }
 
-        function renderChannels(channels) {
-            const list = document.getElementById('channelList');
-            list.innerHTML = channels.map(ch => `
-                <li class="channel-item" onclick="playStream('${ch.url}')">
-                    <img src="${ch.logo}" class="channel-logo">
-                    <span>${ch.name}</span>
-                </li>
-            `).join('');
+        function setupDynamicCategories() {
+            const uniqueCats = new Set(allChannels.map(ch => ch.category));
+            dynamicCategories = ["All", ...Array.from(uniqueCats)];
+            renderCategories();
         }
 
-        // Debounced Search
-        document.getElementById('search').addEventListener('input', (e) => {
-            const val = e.target.value.toLowerCase();
-            const filtered = allChannels.filter(ch => ch.name.toLowerCase().includes(val));
-            renderChannels(filtered);
+        function renderCategories() {
+            const dropContent = document.getElementById('dropdownContent');
+            dropContent.innerHTML = '';
+
+            dynamicCategories.forEach((cat) => {
+                const div = document.createElement('div');
+                div.className = `dropdown-item ${currentCategory === cat ? 'active' : ''}`;
+                div.innerText = cat === 'All' ? 'All Category' : cat;
+                
+                div.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    switchCategory(cat, div);
+                    document.getElementById('dropdownContent').classList.remove('show');
+                    document.querySelector('#categoryBtn span').innerText = `🌐 ${cat === 'All' ? 'All Category' : cat}`;
+                });
+                dropContent.appendChild(div);
+            });
+        }
+
+        document.getElementById('categoryBtn').addEventListener('click', (e) => {
+            e.stopPropagation();
+            document.getElementById('dropdownContent').classList.toggle('show');
         });
 
-        function playStream(url) {
-            localStorage.setItem('lastUrl', url);
-            if (Hls.isSupported()) {
-                hls.loadSource(url);
-                hls.attachMedia(video);
-            } else {
-                video.src = url;
+        window.addEventListener('click', () => {
+            const dropdown = document.getElementById('dropdownContent');
+            if(dropdown.classList.contains('show')) {
+                dropdown.classList.remove('show');
             }
-            player.play();
+        });
+
+        function switchCategory(cat, element) {
+            document.getElementById('search').value = ''; 
+            document.querySelectorAll('.dropdown-item').forEach(el => el.classList.remove('active'));
+            element.classList.add('active');
+            currentCategory = cat;
+            filterAndRender();
         }
+
+        function renderChannels(channels) {
+            const listContainer = document.getElementById('channelList');
+            listContainer.innerHTML = '';
+
+            if(channels.length === 0) {
+                listContainer.innerHTML = '<p style="grid-column: span 2; padding: 20px; color: #aaa; text-align: center;">কোনো চ্যানেল পাওয়া যায়নি!</p>';
+                return;
+            }
+
+            channels.forEach((channel) => {
+                const li = document.createElement('li');
+                li.className = 'channel-item';
+                li.innerHTML = `
+                    <img class="channel-logo" src="${channel.logo}" onerror="this.src='https://via.placeholder.com/60x60?text=Live+TV'">
+                    <span class="channel-name">${channel.name || 'Live Stream'}</span>
+                `;
+
+                li.addEventListener('click', () => {
+                    document.querySelectorAll('.channel-item').forEach(el => el.classList.remove('active'));
+                    li.classList.add('active');
+                    playStream(channel.url);
+                });
+
+                listContainer.appendChild(li);
+            });
+        }
+
+        function filterAndRender() {
+            let filtered = allChannels;
+            if (currentCategory !== 'All') {
+                filtered = allChannels.filter(ch => ch.category === currentCategory);
+            }
+            renderChannels(filtered);
+        }
+
+        function handleGlobalSearch() {
+            const searchQuery = document.getElementById('search').value.toLowerCase().trim();
+            let filtered = allChannels;
+
+            if (searchQuery.length > 0) {
+                currentCategory = 'All';
+                
+                document.querySelectorAll('.dropdown-item').forEach(el => el.classList.remove('active'));
+                const allTab = document.querySelector('.dropdown-item'); 
+                if (allTab) allTab.classList.add('active');
+                document.querySelector('#categoryBtn span').innerText = `🌐 All Category`;
+
+                filtered = allChannels.filter(ch => ch.name && ch.name.toLowerCase().includes(searchQuery));
+            } else {
+                return filterAndRender();
+            }
+
+            renderChannels(filtered);
+        }
+
+        // 🌟 NEW: Modern Stream Player Logic (HLS + Plyr)
+        function playStream(url) {
+            if (hlsPlayer) {
+                hlsPlayer.destroy();
+                hlsPlayer = null;
+            }
+
+            if (url.includes('.m3u8')) {
+                if (Hls.isSupported()) {
+                    hlsPlayer = new Hls();
+                    hlsPlayer.loadSource(url);
+                    hlsPlayer.attachMedia(videoElement);
+                    hlsPlayer.on(Hls.Events.MANIFEST_PARSED, function () {
+                        player.play().catch(e => console.log("Play blocked by browser"));
+                    });
+                } else if (videoElement.canPlayType('application/vnd.apple.mpegurl')) {
+                    videoElement.src = url;
+                    videoElement.addEventListener('loadedmetadata', function () {
+                        player.play().catch(e => console.log("Play blocked by browser"));
+                    });
+                }
+            } else {
+                videoElement.src = url;
+                player.play().catch(e => console.log("Play blocked by browser"));
+            }
+        }
+
+        // Fullscreen Orientation Lock support for Plyr
+        player.on('enterfullscreen', () => {
+            if (screen.orientation && screen.orientation.lock) {
+                screen.orientation.lock('landscape').catch(err => console.log("Orientation lock blocked."));
+            }
+        });
+
+        player.on('exitfullscreen', () => {
+            if (screen.orientation && screen.orientation.unlock) {
+                screen.orientation.unlock();
+            }
+        });
+
+        // Fetch Data
+        fetch(M3U_URL)
+            .then(res => res.text())
+            .then(data => {
+                allChannels = parseM3U(data); 
+                setupDynamicCategories(); 
+                renderChannels(allChannels);
+                
+                if (allChannels.length > 0) {
+                    playStream(allChannels[0].url);
+                    setTimeout(() => {
+                        const first = document.querySelector('.channel-item');
+                        if(first) first.classList.add('active');
+                    }, 300);
+                }
+            })
+            .catch(err => {
+                document.getElementById('channelList').innerHTML = '<p style="grid-column: span 2; padding: 20px; color: #ff007f; text-align: center;">প্লেলিস্ট লোড ব্যর্থ।</p>';
+            });
+
+        document.getElementById('search').addEventListener('input', handleGlobalSearch);
     </script>
 </body>
 </html>
