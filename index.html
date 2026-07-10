@@ -9,6 +9,7 @@
     
     <style>
         :root {
+            /* প্লেয়ারের ডিফল্ট কালার চেঞ্জ করে আমাদের নিয়ন পিংক করে দেওয়া হলো */
             --plyr-color-main: #ff007f;
         }
 
@@ -61,6 +62,7 @@
             text-align: center;
         }
 
+        /* 🛠️ TOOLBAR (Equally Divided) */
         .toolbar {
             display: flex;
             align-items: center;
@@ -71,6 +73,7 @@
             position: relative;
         }
 
+        /* 🌐 ড্রপডাউন মেনু ডিজাইন (Left Side - 50%) */
         .custom-dropdown {
             flex: 1; 
             position: relative;
@@ -159,6 +162,7 @@
             font-weight: bold;
         }
 
+        /* 🔍 সার্চ বার ডিজাইন (Right Side - 50%) */
         .search-bar {
             flex: 1; 
             width: 100%;
@@ -223,7 +227,7 @@
             border-radius: 8px;
             object-fit: cover;
             margin-right: 12px;
-            background-color: #14141f;
+            background-color: #000;
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
@@ -235,7 +239,7 @@
             text-overflow: ellipsis;
         }
 
-        /* --- 🌟 PREMIUM PLAYER AREA (NO SEAMLESS BLACK BARS) --- */
+        /* --- 🌟 PREMIUM ROUNDED PLAYER AREA (UPDATED FOR PLYR) --- */
         .main-player {
             flex: 1;
             display: flex;
@@ -252,33 +256,16 @@
             overflow: hidden;
             box-shadow: 0 15px 40px rgba(0,0,0,0.6), 0 0 30px rgba(255, 0, 127, 0.15);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            background: #0f0c20;
+            background: #000;
         }
 
-        .plyr, 
-        .plyr__video-wrapper,
-        .plyr--video {
-            width: 100% !important;
-            height: 100% !important;
-            max-width: 100% !important;
-            max-height: 100% !important;
-            background: #0f0c20 !important;
+        .plyr {
+            width: 100%;
+            height: 100%;
         }
 
-        .plyr__video-wrapper {
-            padding-bottom: 0 !important; 
-            aspect-ratio: auto !important;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .plyr__video-wrapper video,
-        .plyr video {
-            width: 100% !important;
-            height: 100% !important;
-            object-fit: fill !important; 
-            background: #0f0c20 !important;
+        .plyr__video-wrapper video {
+            object-fit: fill; /* ভিডিও ফুল স্ক্রিন জুড়ে দেখাবে */
         }
 
         /* --- 📱 RESPONSIVE FOR MOBILE --- */
@@ -392,16 +379,14 @@
 
     <script>
         const M3U_URL = 'https://raw.githubusercontent.com/ahmedstore75/Iptvbdlive/refs/heads/main/mixiptvchannel.m3u'; 
-        
-        // 🌟 ১০০% ওয়ার্কিং ডাইনামিক বেসড কাস্টম SVG লোগো (লিংক বা ইন্টারনেটের ঝামেলা নেই)
-        const DEFAULT_LOGO = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100"><rect width="100" height="100" rx="15" fill="%231e1932"/><path d="M30 20 L50 40 L70 20 M50 40 L50 50" stroke="%23ff007f" stroke-width="4" stroke-linecap="round" fill="none"/><rect x="15" y="45" width="70" height="45" rx="8" fill="none" stroke="%23ff007f" stroke-width="4"/><polygon points="45,57 63,67.5 45,78" fill="%237928ca"/></svg>`;
 
+        // 🌟 NEW: Initialize Plyr
         const videoElement = document.getElementById('iptv-player');
         const player = new Plyr(videoElement, {
             controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'fullscreen'],
             autoplay: true
         });
-        let hlsPlayer = null; 
+        let hlsPlayer = null; // HLS.js instance
 
         let allChannels = [];
         let currentCategory = 'All';
@@ -421,14 +406,7 @@
                     }
                     
                     const logoMatch = line.match(/tvg-logo="([^"]+)"/);
-                    let parsedLogo = logoMatch ? logoMatch[1].trim() : '';
-                    
-                    // ভ্যালিডেশন: লোগো যদি ফাঁকা থাকে বা http দিয়ে শুরু না হয়, তবেই ডিফল্ট SVG লোগো বসবে
-                    if (!parsedLogo || !parsedLogo.startsWith('http')) {
-                        currentChannel.logo = DEFAULT_LOGO;
-                    } else {
-                        currentChannel.logo = parsedLogo;
-                    }
+                    currentChannel.logo = logoMatch ? logoMatch[1] : 'https://via.placeholder.com/60x60?text=TV';
                     
                     const groupMatch = line.match(/group-title="([^"]+)"/i);
                     currentChannel.category = groupMatch ? groupMatch[1].trim() : 'Uncategorized';
@@ -499,10 +477,8 @@
             channels.forEach((channel) => {
                 const li = document.createElement('li');
                 li.className = 'channel-item';
-                
-                // 🌟 ইমেজ ট্যাগ যদি কোনো কারণে লোড হতে ব্যর্থ (Broken Link) হয়, তবে এই inline onerror ফাংশনটি তৎক্ষণাৎ SVG লোগো বসিয়ে দেবে
                 li.innerHTML = `
-                    <img class="channel-logo" src="${channel.logo}" onerror="this.onerror=null; this.src=\`${DEFAULT_LOGO}\`;"/>
+                    <img class="channel-logo" src="${channel.logo}" onerror="this.src='https://via.placeholder.com/60x60?text=Live+TV'">
                     <span class="channel-name">${channel.name || 'Live Stream'}</span>
                 `;
 
@@ -544,6 +520,7 @@
             renderChannels(filtered);
         }
 
+        // 🌟 NEW: Modern Stream Player Logic (HLS + Plyr)
         function playStream(url) {
             if (hlsPlayer) {
                 hlsPlayer.destroy();
@@ -570,6 +547,7 @@
             }
         }
 
+        // Fullscreen Orientation Lock support for Plyr
         player.on('enterfullscreen', () => {
             if (screen.orientation && screen.orientation.lock) {
                 screen.orientation.lock('landscape').catch(err => console.log("Orientation lock blocked."));
@@ -582,6 +560,7 @@
             }
         });
 
+        // Fetch Data
         fetch(M3U_URL)
             .then(res => res.text())
             .then(data => {
