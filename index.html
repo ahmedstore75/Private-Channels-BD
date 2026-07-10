@@ -9,7 +9,6 @@
     
     <style>
         :root {
-            /* প্লেয়ারের ডিফল্ট কালার চেঞ্জ করে আমাদের নিয়ন পিংক করে দেওয়া হলো */
             --plyr-color-main: #ff007f;
         }
 
@@ -62,7 +61,6 @@
             text-align: center;
         }
 
-        /* 🛠️ TOOLBAR (Equally Divided) */
         .toolbar {
             display: flex;
             align-items: center;
@@ -73,7 +71,6 @@
             position: relative;
         }
 
-        /* 🌐 ড্রপডাউন মেনু ডিজাইন (Left Side - 50%) */
         .custom-dropdown {
             flex: 1; 
             position: relative;
@@ -162,7 +159,6 @@
             font-weight: bold;
         }
 
-        /* 🔍 সার্চ বার ডিজাইন (Right Side - 50%) */
         .search-bar {
             flex: 1; 
             width: 100%;
@@ -227,7 +223,7 @@
             border-radius: 8px;
             object-fit: cover;
             margin-right: 12px;
-            background-color: #000;
+            background-color: #14141f;
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
@@ -239,7 +235,7 @@
             text-overflow: ellipsis;
         }
 
-        /* --- 🌟 PREMIUM ROUNDED PLAYER AREA (TOTAL BLACK BAR REMOVAL) --- */
+        /* --- 🌟 PREMIUM PLAYER AREA (NO SEAMLESS BLACK BARS) --- */
         .main-player {
             flex: 1;
             display: flex;
@@ -256,31 +252,35 @@
             overflow: hidden;
             box-shadow: 0 15px 40px rgba(0,0,0,0.6), 0 0 30px rgba(255, 0, 127, 0.15);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            background: #000;
+            background: #0f0c20; /* কালো বর্ডার দূর করতে থিম ব্যাকগ্রাউন্ড ব্যবহার করা হলো */
         }
 
-        /* Plyr এর ডিফল্ট সাইজিং ও অনুপাত ওভাররাইড করা হলো */
-        .plyr {
+        /* প্লেয়ারের চারপাশের কালো ব্যাকগ্রাউন্ড রিসেট */
+        .plyr, 
+        .plyr__video-wrapper,
+        .plyr--video {
             width: 100% !important;
             height: 100% !important;
             max-width: 100% !important;
             max-height: 100% !important;
+            background: #0f0c20 !important; /* সম্পূর্ণ প্লেয়ার ব্যাকগ্রাউন্ড থিম ম্যাচ */
         }
 
-        /* Plyr এর ভেতরের বক্সের অ্যাসপেক্ট রেশিও ট্রিকস নিষ্ক্রিয় করা হলো */
         .plyr__video-wrapper {
-            width: 100% !important;
-            height: 100% !important;
-            padding-bottom: 0 !important; /* Plyr-এর ডিফল্ট Aspect Ratio প্যাডিং রিমুভ */
+            padding-bottom: 0 !important; 
             aspect-ratio: auto !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        /* ভিডিওকে সম্পূর্ণ কন্টেইনার জুড়ে জোর করে স্ট্রেচ করার মূল সিএসএস */
+        /* ভিডিওকে সর্বোচ্চ স্ট্রেচ ফিল করার কমান্ড */
         .plyr__video-wrapper video,
         .plyr video {
             width: 100% !important;
             height: 100% !important;
-            object-fit: fill !important; /* কোন ক্রপ বা বর্ডার ছাড়া ফুল ফিট */
+            object-fit: fill !important; 
+            background: #0f0c20 !important;
         }
 
         /* --- 📱 RESPONSIVE FOR MOBILE --- */
@@ -394,14 +394,15 @@
 
     <script>
         const M3U_URL = 'https://raw.githubusercontent.com/ahmedstore75/Iptvbdlive/refs/heads/main/mixiptvchannel.m3u'; 
+        // 🌟 নতুন সুন্দর ডিফল্ট প্রিমিয়াম লোগো লিংক (আইকন)
+        const DEFAULT_LOGO = 'https://img.icons8.com/neon/96/television.png';
 
-        // Plyr কনফিগারেশন সেটআপ
         const videoElement = document.getElementById('iptv-player');
         const player = new Plyr(videoElement, {
             controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'fullscreen'],
             autoplay: true
         });
-        let hlsPlayer = null; // HLS.js instance
+        let hlsPlayer = null; 
 
         let allChannels = [];
         let currentCategory = 'All';
@@ -421,7 +422,8 @@
                     }
                     
                     const logoMatch = line.match(/tvg-logo="([^"]+)"/);
-                    currentChannel.logo = logoMatch ? logoMatch[1] : 'https://via.placeholder.com/60x60?text=TV';
+                    // যদি লোগো না থাকে বা খালি থাকে, তবে অটোমেটিক সুন্দর ডিফল্ট লোগো বসে যাবে
+                    currentChannel.logo = (logoMatch && logoMatch[1].trim() !== '') ? logoMatch[1] : DEFAULT_LOGO;
                     
                     const groupMatch = line.match(/group-title="([^"]+)"/i);
                     currentChannel.category = groupMatch ? groupMatch[1].trim() : 'Uncategorized';
@@ -492,8 +494,9 @@
             channels.forEach((channel) => {
                 const li = document.createElement('li');
                 li.className = 'channel-item';
+                // 🌟 onerror হ্যান্ডলারেও আমাদের নতুন সুন্দর ডিফল্ট লোগো সেট করা হয়েছে
                 li.innerHTML = `
-                    <img class="channel-logo" src="${channel.logo}" onerror="this.src='https://via.placeholder.com/60x60?text=Live+TV'">
+                    <img class="channel-logo" src="${channel.logo}" onerror="this.onerror=null; this.src='${DEFAULT_LOGO}';">
                     <span class="channel-name">${channel.name || 'Live Stream'}</span>
                 `;
 
@@ -535,7 +538,6 @@
             renderChannels(filtered);
         }
 
-        // 🌟 Modern Stream Player Logic (HLS + Plyr)
         function playStream(url) {
             if (hlsPlayer) {
                 hlsPlayer.destroy();
@@ -562,7 +564,6 @@
             }
         }
 
-        // Fullscreen Orientation Lock support for Plyr
         player.on('enterfullscreen', () => {
             if (screen.orientation && screen.orientation.lock) {
                 screen.orientation.lock('landscape').catch(err => console.log("Orientation lock blocked."));
@@ -575,7 +576,6 @@
             }
         });
 
-        // Fetch Data
         fetch(M3U_URL)
             .then(res => res.text())
             .then(data => {
