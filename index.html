@@ -252,10 +252,9 @@
             overflow: hidden;
             box-shadow: 0 15px 40px rgba(0,0,0,0.6), 0 0 30px rgba(255, 0, 127, 0.15);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            background: #0f0c20; /* কালো বর্ডার দূর করতে থিম ব্যাকগ্রাউন্ড ব্যবহার করা হলো */
+            background: #0f0c20;
         }
 
-        /* প্লেয়ারের চারপাশের কালো ব্যাকগ্রাউন্ড রিসেট */
         .plyr, 
         .plyr__video-wrapper,
         .plyr--video {
@@ -263,7 +262,7 @@
             height: 100% !important;
             max-width: 100% !important;
             max-height: 100% !important;
-            background: #0f0c20 !important; /* সম্পূর্ণ প্লেয়ার ব্যাকগ্রাউন্ড থিম ম্যাচ */
+            background: #0f0c20 !important;
         }
 
         .plyr__video-wrapper {
@@ -274,7 +273,6 @@
             justify-content: center;
         }
 
-        /* ভিডিওকে সর্বোচ্চ স্ট্রেচ ফিল করার কমান্ড */
         .plyr__video-wrapper video,
         .plyr video {
             width: 100% !important;
@@ -394,8 +392,9 @@
 
     <script>
         const M3U_URL = 'https://raw.githubusercontent.com/ahmedstore75/Iptvbdlive/refs/heads/main/mixiptvchannel.m3u'; 
-        // 🌟 নতুন সুন্দর ডিফল্ট প্রিমিয়াম লোগো লিংক (আইকন)
-        const DEFAULT_LOGO = 'https://img.icons8.com/neon/96/television.png';
+        
+        // 🌟 ১০০% ওয়ার্কিং ডাইনামিক বেসড কাস্টম SVG লোগো (লিংক বা ইন্টারনেটের ঝামেলা নেই)
+        const DEFAULT_LOGO = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100"><rect width="100" height="100" rx="15" fill="%231e1932"/><path d="M30 20 L50 40 L70 20 M50 40 L50 50" stroke="%23ff007f" stroke-width="4" stroke-linecap="round" fill="none"/><rect x="15" y="45" width="70" height="45" rx="8" fill="none" stroke="%23ff007f" stroke-width="4"/><polygon points="45,57 63,67.5 45,78" fill="%237928ca"/></svg>`;
 
         const videoElement = document.getElementById('iptv-player');
         const player = new Plyr(videoElement, {
@@ -422,8 +421,14 @@
                     }
                     
                     const logoMatch = line.match(/tvg-logo="([^"]+)"/);
-                    // যদি লোগো না থাকে বা খালি থাকে, তবে অটোমেটিক সুন্দর ডিফল্ট লোগো বসে যাবে
-                    currentChannel.logo = (logoMatch && logoMatch[1].trim() !== '') ? logoMatch[1] : DEFAULT_LOGO;
+                    let parsedLogo = logoMatch ? logoMatch[1].trim() : '';
+                    
+                    // ভ্যালিডেশন: লোগো যদি ফাঁকা থাকে বা http দিয়ে শুরু না হয়, তবেই ডিফল্ট SVG লোগো বসবে
+                    if (!parsedLogo || !parsedLogo.startsWith('http')) {
+                        currentChannel.logo = DEFAULT_LOGO;
+                    } else {
+                        currentChannel.logo = parsedLogo;
+                    }
                     
                     const groupMatch = line.match(/group-title="([^"]+)"/i);
                     currentChannel.category = groupMatch ? groupMatch[1].trim() : 'Uncategorized';
@@ -494,9 +499,10 @@
             channels.forEach((channel) => {
                 const li = document.createElement('li');
                 li.className = 'channel-item';
-                // 🌟 onerror হ্যান্ডলারেও আমাদের নতুন সুন্দর ডিফল্ট লোগো সেট করা হয়েছে
+                
+                // 🌟 ইমেজ ট্যাগ যদি কোনো কারণে লোড হতে ব্যর্থ (Broken Link) হয়, তবে এই inline onerror ফাংশনটি তৎক্ষণাৎ SVG লোগো বসিয়ে দেবে
                 li.innerHTML = `
-                    <img class="channel-logo" src="${channel.logo}" onerror="this.onerror=null; this.src='${DEFAULT_LOGO}';">
+                    <img class="channel-logo" src="${channel.logo}" onerror="this.onerror=null; this.src=\`${DEFAULT_LOGO}\`;"/>
                     <span class="channel-name">${channel.name || 'Live Stream'}</span>
                 `;
 
