@@ -1,0 +1,35 @@
+name: Auto Fetch JSON and Playlist
+
+on:
+  schedule:
+    - cron: '0 */6 * * *' # প্রতি ৬ ঘণ্টা পর পর অটোমেটিক চলবে
+  workflow_dispatch: # ম্যানুয়ালি বাটন চেপে চালানোর জন্য
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install requests
+
+    - name: Run script
+      run: python main.py
+
+    - name: Commit and push changes
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git add app_settings.json user_preference.json playlist.m3u8
+        git commit -m "Auto updated JSON and Playlist data" || exit 0
+        git push
