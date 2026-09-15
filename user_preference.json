@@ -1,0 +1,24 @@
+{
+    "Response": {
+        "responseCode": 1,
+        "status": "Success",
+        "message": "Data Returned Successfully"
+    },
+    "prefernceData": [
+        {
+            "headerId": 1,
+            "headerName": "Sports",
+            "hasChildren": true,
+            "levelId": 1,
+            "formatName": "format"
+        },
+        {
+            "headerId": 2,
+            "headerName": "Entertainment",
+            "hasChildren": true,
+            "levelId": 1,
+            "formatName": "format"
+        }
+    ],
+    "headerName": "What excites you the most?"
+}
