@@ -51,10 +51,10 @@
         "contentCategoryId": 0,
         "IsHideMenus": false,
         "SeoTitle": null,
-        "CountryCode": "CA",
+        "CountryCode": "US",
         "CountryShortCode": 1,
         "numMaxLength": 10,
-        "countryFlag": "http://api.hostip.info/images/flags/ca.gif"
+        "countryFlag": "http://api.hostip.info/images/flags/us.gif"
     },
     "SideBarMenus": [
         {
