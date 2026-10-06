@@ -1,11 +1,7 @@
-import json
 import requests
 
-# API URL
-settings_url = (
-    "https://raw.githubusercontent.com/sm-monirulislam/Tapmad_Auto_Update_Playlist/refs/heads/main/tapmad_sm.m3u"
-)
-header_url = "https://raw.githubusercontent.com/sm-monirulislam/Tapmad_Auto_Update_Playlist/refs/heads/main/tapmad_sm.m3u"
+# M3U প্লেলিস্টের URL
+PLAYLIST_URL = "https://raw.githubusercontent.com/sm-monirulislam/Tapmad_Auto_Update_Playlist/refs/heads/main/tapmad_sm.m3u"
 
 headers = {
     "User-Agent": (
@@ -15,55 +11,31 @@ headers = {
 
 
 def fetch_and_generate():
-    m3u_lines = ["#EXTM3U\n"]
-
-    # 1. Fetch App Settings JSON
     try:
-        res = requests.get(settings_url, headers=headers)
+        # M3U ডাটা ফেচ করা
+        res = requests.get(PLAYLIST_URL, headers=headers)
+
         if res.status_code == 200:
-            data = res.json()
+            m3u_data = res.text
 
-            # Save full JSON file
-            with open("app_settings.json", "w", encoding="utf-8") as f:
-                json.dump(data, f, indent=4)
+            # প্রাপ্ত ডাটা সরাসরি playlist.m3u8 ফাইলে সেভ করা
+            with open("playlist.m3u8", "w", encoding="utf-8") as f:
+                f.write(m3u_data)
 
-            # JSON ডাটা খুঁজে ভিডিও লিঙ্ক / চ্যানেল এক্সট্র্যাক্ট করার চেষ্টা
-            channels = []
-            if isinstance(data, dict):
-                # JSON এর ভেতরে চ্যানেল বা ক্যাটাগরি ফিল্টার করা
-                channels = data.get("channels", []) or data.get("data", [])
-            elif isinstance(data, list):
-                channels = data
-
-            for item in channels:
-                if isinstance(item, dict):
-                    name = item.get("name") or item.get("title") or "Unknown Channel"
-                    stream_url = (
-                        item.get("stream_url")
-                        or item.get("url")
-                        or item.get("m3u8_url")
-                    )
-
-                    if stream_url:
-                        m3u_lines.append(f"#EXTINF:-1, {name}\n{stream_url}\n")
+            print("playlist.m3u8 সফলভাবে আপডেট হয়েছে!")
+        else:
+            print(f"HTTP Error: {res.status_code}")
 
     except Exception as e:
-        print(f"Error fetching settings: {e}")
+        print(f"Error fetching playlist: {e}")
 
-    # 2. Fetch User Preference Header JSON
-    try:
-        res2 = requests.get(header_url, headers=headers)
-        if res2.status_code == 200:
-            with open("user_preference.json", "w", encoding="utf-8") as f:
-                json.dump(res2.json(), f, indent=4)
-    except Exception as e:
-        print(f"Error fetching preference: {e}")
-
-    # 3. Save M3U Playlist
-    with open("playlist.m3u8", "w", encoding="utf-8") as f:
-        f.writelines(m3u_lines)
-
-    print("Processing complete!")
+        # কোনো ত্রুটি হলে ডিফল্ট প্লেলিস্ট তৈরি করা
+        default_content = (
+            "#EXTM3U\n#EXTINF:-1, Default Stream\nhttps://example.com/live.m3u8"
+        )
+        with open("playlist.m3u8", "w", encoding="utf-8") as f:
+            f.write(default_content)
+        print("ডিফল্ট ডাটা দিয়ে playlist.m3u8 সেভ করা হয়েছে।")
 
 
 if __name__ == "__main__":
