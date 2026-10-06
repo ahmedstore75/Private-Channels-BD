@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 // আপনার সঠিক API বা প্লেলিস্টের URL এখানে দিতে হবে
-const API_URL = 'https://www.tapmad.com'; 
+const API_URL = 'https://raw.githubusercontent.com/sm-monirulislam/Tapmad_Auto_Update_Playlist/refs/heads/main/tapmad_sm.m3u'; 
 
 async function updatePlaylist() {
   try {
