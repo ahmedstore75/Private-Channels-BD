@@ -30,6 +30,6 @@ jobs:
       run: |
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
-        git add app_settings.json user_preference.json playlist.m3u8
+        git add app_settings.json user_preference.json playlist.m3u
         git commit -m "Auto updated JSON and Playlist data" || exit 0
         git push
