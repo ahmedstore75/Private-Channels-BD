@@ -36,7 +36,7 @@
         "IsTapShop": true,
         "InsertialsBanner": true,
         "IsAdmobEnable": false,
-        "Tabsub": 1,
+        "Tabsub": 0,
         "IsInternationalAdds": false,
         "InternationalVideoUrl": null,
         "IntBannerHomeUrl": null,
@@ -51,10 +51,10 @@
         "contentCategoryId": 0,
         "IsHideMenus": false,
         "SeoTitle": null,
-        "CountryCode": "US",
-        "CountryShortCode": 1,
+        "CountryCode": "MX",
+        "CountryShortCode": 52,
         "numMaxLength": 10,
-        "countryFlag": "http://api.hostip.info/images/flags/us.gif"
+        "countryFlag": "http://api.hostip.info/images/flags/mx.gif"
     },
     "SideBarMenus": [
         {
