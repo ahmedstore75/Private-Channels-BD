@@ -5,7 +5,7 @@ import requests
 settings_url = (
     "https://raw.githubusercontent.com/sm-monirulislam/Tapmad_Auto_Update_Playlist/refs/heads/main/tapmad_sm.m3u"
 )
-header_url = "https://backend-api.tapmad.com/api/getUserPrefernceHeader"
+header_url = "https://raw.githubusercontent.com/sm-monirulislam/Tapmad_Auto_Update_Playlist/refs/heads/main/tapmad_sm.m3u"
 
 headers = {
     "User-Agent": (
