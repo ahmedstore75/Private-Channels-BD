@@ -3,28 +3,10 @@
 # Playlist name : Tapmad Playlist
 # Developed by: Monirul Islam
 # Telegram group : https://t.me/sm_iptv_bd
-# Last Updated: 01:00:09 AM 11-10-2026 (BD Time)
-# All channel : 7
+# Last Updated: 04:00:05 AM 11-10-2026 (BD Time)
+# All channel : 1
 #=================================
 
 #EXTINF:-1 tvg-id="tapmad-18618" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791275903540x302.jpg" group-title="Mma",Abdoulaye Kane vs Badr Medkouri - PFL Africa - PFL 2026
 https://bpl24middleeast.akamaized.net/hls/live/2109311/tapmad-PAKvsWI-BKd2-TesT/master.m3u8
-
-#EXTINF:-1 tvg-id="tapmad-17095" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1790927218540x302.jpg" group-title="Football",Al-Hilal vs Al-Ittihad - MATCHDAY 8 - Saudi Pro League 2026/27
-https://saseries.akamaized.net/hls/live/2110097/56408643-tapMad/master.m3u8
-
-#EXTINF:-1 tvg-id="tapmad-18415" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791191930540x302.jpg" group-title="Football",Lorient vs Paris FC - MATCHDAY 6 - French Ligue 1 2026/27
-https://saseries.akamaized.net/hls/live/2110097/28593jkiL-tapmad/master.m3u8
-
-#EXTINF:-1 tvg-id="tapmad-18416" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791192142540x302.jpg" group-title="Football",Monaco vs Toulouse - MATCHDAY 6 - French Ligue 1 2026/27
-https://saseries.akamaized.net/hls/live/2110097/FiFa-3827e1/master.m3u8
-
-#EXTINF:-1 tvg-id="tapmad-18417" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791192301540x302.jpg" group-title="Football",Brest vs Angers - MATCHDAY 6 - French Ligue 1 2026/27
-https://multiregion-asia-cdn.tapmad.com/v1/019f067c253015e8f412028003fe/019f067d5e3615e8f060213b29a21b/main.m3u8
-
-#EXTINF:-1 tvg-id="tapmad-18418" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791192451540x302.jpg" group-title="Football",PSG vs Le Mans - MATCHDAY 6 - French Ligue 1 2026/27
-https://saseries.akamaized.net/hls/live/2110097/306-tapmad/master.m3u8
-
-#EXTINF:-1 tvg-id="tapmad-18269" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1790926464540x302.jpg" group-title="Football",Real Madrid vs Villarreal - MATCHDAY 8 - LaLiga 2026/27
-https://saseries.akamaized.net/hls/live/2110097/tapmad258645/master.m3u8
 
