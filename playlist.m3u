@@ -3,16 +3,10 @@
 # Playlist name : Tapmad Playlist
 # Developed by: Monirul Islam
 # Telegram group : https://t.me/sm_iptv_bd
-# Last Updated: 06:00:06 PM 10-10-2026 (BD Time)
-# All channel : 3
+# Last Updated: 03:00:05 AM 11-10-2026 (BD Time)
+# All channel : 1
 #=================================
 
-#EXTINF:-1 tvg-id="tapmad-18900" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791467509540x302.jpg" group-title="Cricket",Afghanistan vs Bangladesh - 1st Test - Afghanistan vs Bangladesh 2026
+#EXTINF:-1 tvg-id="tapmad-18618" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791275903540x302.jpg" group-title="Mma",Abdoulaye Kane vs Badr Medkouri - PFL Africa - PFL 2026
 https://bpl24middleeast.akamaized.net/hls/live/2109311/tapmad-PAKvsWI-BKd2-TesT/master.m3u8
-
-#EXTINF:-1 tvg-id="tapmad-17700" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791526082540x302.jpg" group-title="Cricket",South Africa vs Australia - 1st Test - 1st Test - Australia Tour of South Africa 2026
-https://d8j84o343a5m2.cloudfront.net/live/testtapmad2/master.m3u8
-
-#EXTINF:-1 tvg-id="tapmad-18266" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1790925829540x302.jpg" group-title="Football",Rayo Vallecano vs Athletic - MATCHDAY 8 - LaLiga 2026/27
-https://saseries.akamaized.net/hls/live/2110097/56408643-tapMad/master.m3u8
 
