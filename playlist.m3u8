@@ -3,7 +3,16 @@
 # Playlist name : Tapmad Playlist
 # Developed by: Monirul Islam
 # Telegram group : https://t.me/sm_iptv_bd
-# Last Updated: 08:00:04 AM 12-10-2026 (BD Time)
-# All channel : 0
+# Last Updated: 03:00:07 PM 12-10-2026 (BD Time)
+# All channel : 3
 #=================================
+
+#EXTINF:-1 tvg-id="tapmad-18900" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791467509540x302.jpg" group-title="Cricket",Afghanistan vs Bangladesh - 1st Test - Afghanistan vs Bangladesh 2026
+https://serieAleague.akamaized.net/hls/live/2107107/tap-BK-PSL-D1-E/master.m3u8
+
+#EXTINF:-1 tvg-id="tapmad-17700" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791526082540x302.jpg" group-title="Cricket",South Africa vs Australia - 1st Test - Australia Tour of South Africa 2026
+https://saseries.akamaized.net/hls/live/2110097/tapmad258645/master.m3u8
+
+#EXTINF:-1 tvg-id="tapmad-18091" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791782026540x302.jpg" group-title="Cricket",Pakistan U19 vs Sri Lanka U19 - Group Stage - Pakistan Women's Under-19s T20 Tri-Series 2026
+https://serieAleague.akamaized.net/hls/live/2107107/A1@25853-tapmad/master.m3u8
 
