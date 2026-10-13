@@ -3,22 +3,7 @@
 # Playlist name : Tapmad Playlist
 # Developed by: Monirul Islam
 # Telegram group : https://t.me/sm_iptv_bd
-# Last Updated: 07:00:08 PM 13-10-2026 (BD Time)
-# All channel : 5
+# Last Updated: 04:00:04 AM 14-10-2026 (BD Time)
+# All channel : 0
 #=================================
-
-#EXTINF:-1 tvg-id="tapmad-18900" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791467509540x302.jpg" group-title="Cricket",Afghanistan vs Bangladesh - 1st Test - Afghanistan vs Bangladesh 2026
-https://saseries.akamaized.net/hls/live/2110097/tapmad258645/master.m3u8
-
-#EXTINF:-1 tvg-id="tapmad-18673" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791365332540x302.jpg" group-title="Football",Buriram United (THA) vs Beijing FC (CHN) Live - MATCHDAY 2 - AFC Champions League Elite 2026/27
-https://bpl24middleeast.akamaized.net/hls/live/2109311/tapmad-PAKvsWI-BKd2-TesT/master.m3u8
-
-#EXTINF:-1 tvg-id="tapmad-18678" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791365766540x302.jpg" group-title="Football",Cong An Hai Noi FC (VIE) vs Kashima Antlers (JPN) Live - MATCHDAY 2 - AFC Champions League Elite 2026/27
-https://bpl24middleeast.akamaized.net/hls/live/2109311/Laliga-2026/master.m3u8
-
-#EXTINF:-1 tvg-id="tapmad-18304" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791546548540x302.jpg" group-title="Cricket",Pakistan vs Sri Lanka - 3rd T20I - Sri Lanka Tour of Pakistan 2026
-https://t-prod-pk.tapmad.com/v1/019eff56c91d15e8f412028003f9/019eff5a7a6f15e8f060057b6796/main.m3u8
-
-#EXTINF:-1 tvg-id="tapmad-18458" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791359151540x302.jpg" group-title="Football",East Bengal FC (IND) vs Al Shorta (IRQ) Live - MATCHDAY 2 - AFC Champions League Two 2026/27
-https://vodintlv2.in-maa-1.linodeobjects.com/promos/AFCTWOPROMO/master.m3u8
 
