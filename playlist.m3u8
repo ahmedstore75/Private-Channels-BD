@@ -3,22 +3,22 @@
 # Playlist name : Tapmad Playlist
 # Developed by: Monirul Islam
 # Telegram group : https://t.me/sm_iptv_bd
-# Last Updated: 02:00:06 PM 13-10-2026 (BD Time)
+# Last Updated: 10:00:09 PM 13-10-2026 (BD Time)
 # All channel : 5
 #=================================
 
-#EXTINF:-1 tvg-id="tapmad-18900" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791467509540x302.jpg" group-title="Cricket",Afghanistan vs Bangladesh - 1st Test - Afghanistan vs Bangladesh 2026
-https://saseries.akamaized.net/hls/live/2110097/tapmad258645/master.m3u8
+#EXTINF:-1 tvg-id="tapmad-18304" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791546548540x302.jpg" group-title="Cricket",Pakistan vs Sri Lanka - 3rd T20I - Sri Lanka Tour of Pakistan 2026
+https://t-prod-pk.tapmad.com/v1/019eff56c91d15e8f412028003f9/019eff5a7a6f15e8f060057b6796/main.m3u8
 
-#EXTINF:-1 tvg-id="tapmad-17700" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791526082540x302.jpg" group-title="Cricket",South Africa vs Australia - 1st Test - Australia Tour of South Africa 2026
-https://saseries.akamaized.net/hls/live/2110097/28593jkiL-tapmad/master.m3u8
+#EXTINF:-1 tvg-id="tapmad-18463" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791359646540x302.jpg" group-title="Football",Al Seeb Club (OMA) vs Al Hussein (JOR) Live - MATCHDAY 2 - AFC Champions League Two 2026/27
+https://bpl24middleeast.akamaized.net/hls/live/2109311/j15klM//master.m3u8
 
-#EXTINF:-1 tvg-id="tapmad-18653" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791360983540x302.jpg" group-title="Football",Newcastle Jets FC (AUS) vs Gamba Osaka (JPN) Live - MATCHDAY 2 - AFC Champions League Elite 2026/27
-https://bpl24middleeast.akamaized.net/hls/live/2109311/tapeuropa27/master.m3u8
+#EXTINF:-1 tvg-id="tapmad-18683" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791366374540x302.jpg" group-title="Football",Al Sadd SC (QAT) vs Al Hilal SFC (KSA) Live - MATCHDAY 2 - AFC Champions League Elite 2026/27
+https://bpl24middleeast.akamaized.net/hls/live/2109311/tapmad-PAKvsWI-BKd2-TesT/master.m3u8
 
-#EXTINF:-1 tvg-id="tapmad-18260" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1790936527540x302.jpg" group-title="Football",Brothers Union Ltd vs Fakirerpool Young Mens Club - MATCHDAY 3 - Federation Cup 2026/27
+#EXTINF:-1 tvg-id="tapmad-18341" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791189230540x302.jpg" group-title="Football",Lens vs Sporting CP - MATCHDAY 2 - UEFA Champions League 2026/27
 https://vodnewv2.in-maa-1.linodeobjects.com/promos/Tapmadpromo/master.m3u8
 
-#EXTINF:-1 tvg-id="tapmad-18261" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1790936642540x302.jpg" group-title="Football",Rahamatgonj MFS vs Chattogram City FC - MATCHDAY 3 - Federation Cup 2026/27
+#EXTINF:-1 tvg-id="tapmad-18342" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791189392540x302.jpg" group-title="Football",Sabah vs Slavia Praha - MATCHDAY 2 - UEFA Champions League 2026/27
 https://vodnewv2.in-maa-1.linodeobjects.com/promos/Tapmadpromo/master.m3u8
 
