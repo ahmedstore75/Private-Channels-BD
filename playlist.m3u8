@@ -3,7 +3,13 @@
 # Playlist name : Tapmad Playlist
 # Developed by: Monirul Islam
 # Telegram group : https://t.me/sm_iptv_bd
-# Last Updated: 11:00:04 AM 14-10-2026 (BD Time)
-# All channel : 0
+# Last Updated: 04:00:04 PM 14-10-2026 (BD Time)
+# All channel : 2
 #=================================
+
+#EXTINF:-1 tvg-id="tapmad-18693" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791451842540x302.jpg" group-title="Football",Kashiwa Reysol (JPN) vs Port FC (THA) Live - MATCHDAY 2 - AFC Champions League Elite 2026/27
+https://bpl24middleeast.akamaized.net/hls/live/2109311/Laliga-2026/master.m3u8
+
+#EXTINF:-1 tvg-id="tapmad-18698" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791452312540x302.jpg" group-title="Football",Vissel Kobe (JPN) vs Jeonbuk Hyundai Motors FC (KOR) Live - MATCHDAY 2 - AFC Champions League Elite 2026/27
+https://bpl24middleeast.akamaized.net/hls/live/2109311/tapeuropa27/master.m3u8
 
