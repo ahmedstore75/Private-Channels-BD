@@ -3,25 +3,16 @@
 # Playlist name : Tapmad Playlist
 # Developed by: Monirul Islam
 # Telegram group : https://t.me/sm_iptv_bd
-# Last Updated: 10:00:08 PM 14-10-2026 (BD Time)
-# All channel : 6
+# Last Updated: 03:00:07 AM 15-10-2026 (BD Time)
+# All channel : 3
 #=================================
 
-#EXTINF:-1 tvg-id="tapmad-17717" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791354574540x302.jpg" group-title="Cricket",India vs West Indies - 4th T20I - West Indies Tour of India 2026
-https://saseries.akamaized.net/hls/live/2110097/56408643-tapMad/master.m3u8
+#EXTINF:-1 tvg-id="tapmad-18352" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791444130540x302.jpg" group-title="Football",Shakhtar Donetsk vs AEK Athens - MATCHDAY 2 - UEFA Champions League 2026/27
+https://tencent-cdn.tapmad.com/v1/019ea6d121dd15e8f4122afee4cf8f/019ea6d2f96e15e8f0602c5e1b7bc3/master.m3u8
 
-#EXTINF:-1 tvg-id="tapmad-18350" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791443458540x302.jpg" group-title="Football",LASK vs Liverpool - MATCHDAY 2 - UEFA Champions League 2026/27
-https://vodintlv2.in-maa-1.linodeobjects.com/UCL2026/PROMO/master.m3u8
+#EXTINF:-1 tvg-id="tapmad-18353" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791444744540x302.jpg" group-title="Football",Real Betis vs Porto - MATCHDAY 2 - UEFA Champions League 2026/27
+https://t-prod-pk.tapmad.com/v1/019eff56c91d15e8f412028003f9/019eff5a7a6f15e8f060057b6796/main.m3u8
 
-#EXTINF:-1 tvg-id="tapmad-18478" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791454958540x302.jpg" group-title="Football",Al Jazira Club (UAE) vs FC Arkadag (TKM) Live - MATCHDAY 2 - AFC Champions League Two 2026/27
-https://bpl24middleeast.akamaized.net/hls/live/2109311/tapmad-PAKvsWI-BKd2-TesT/master.m3u8
-
-#EXTINF:-1 tvg-id="tapmad-18483" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791455433540x302.jpg" group-title="Football",Al Muharraq SC (BHR) vs Golgohar Sirjan SC (IRN) Live - MATCHDAY 2 - AFC Champions League Two 2026/27
-https://multiregion-asia-cdn.tapmad.com/v1/019f067c253015e8f412028003fe/019f067d5e3615e8f060213b29a21b/main.m3u8
-
-#EXTINF:-1 tvg-id="tapmad-18498" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791528140540x302.jpg" group-title="Football",Kuwait SC (KUW) vs Al Khaldiya SC (BHR) Live - MATCHDAY 2 - AFC Champions League Two 2026/27
-https://bpl24middleeast.akamaized.net/hls/live/2109311/j15klM//master.m3u8
-
-#EXTINF:-1 tvg-id="tapmad-18351" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791443293540x302.jpg" group-title="Football",Feyenoord vs Como - MATCHDAY 2 - UEFA Champions League 2026/27
-https://vodintlv2.in-maa-1.linodeobjects.com/UCL2026/PROMO/master.m3u8
+#EXTINF:-1 tvg-id="tapmad-18356" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791443946540x302.jpg" group-title="Football",Aston Villa vs Fenerbahce - MATCHDAY 2 - UEFA Champions League 2026/27
+https://saseries.akamaized.net/hls/live/2110097/28593jkiL-tapmad/master.m3u8
 
