@@ -3,22 +3,7 @@
 # Playlist name : Tapmad Playlist
 # Developed by: Monirul Islam
 # Telegram group : https://t.me/sm_iptv_bd
-# Last Updated: 03:00:08 AM 14-10-2026 (BD Time)
-# All channel : 5
+# Last Updated: 06:00:04 AM 14-10-2026 (BD Time)
+# All channel : 0
 #=================================
-
-#EXTINF:-1 tvg-id="tapmad-18343" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791440779540x302.jpg" group-title="Football",Galatasaray vs Barcelona - MATCHDAY 2 - UEFA Champions League 2026/27
-https://t-prod-pk.tapmad.com/v1/019eff56c91d15e8f412028003f9/019eff5a7a6f15e8f060057b6796/main.m3u8
-
-#EXTINF:-1 tvg-id="tapmad-18344" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791903716540.jpg" group-title="Football",RB Leipzig vs PSV Eindhoven - MATCHDAY 2 - UEFA Champions League 2026/27
-https://serieAleague.akamaized.net/hls/live/2107107/tap-BK-PSL-D1-E/master.m3u8
-
-#EXTINF:-1 tvg-id="tapmad-18346" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791440503540x302.jpg" group-title="Football",Atletico Madrid vs Manchester United - MATCHDAY 2 - UEFA Champions League 2026/27
-https://saseries.akamaized.net/hls/live/2110097/FiFa-3827e1/master.m3u8
-
-#EXTINF:-1 tvg-id="tapmad-18348" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791441247540x302.jpg" group-title="Football",Viking vs Bayern Munchen - MATCHDAY 2 - UEFA Champions League 2026/27
-https://saseries.akamaized.net/hls/live/2110097/tapmad258645/master.m3u8
-
-#EXTINF:-1 tvg-id="tapmad-18349" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791440639540x302.jpg" group-title="Football",Inter vs Club Brugge - MATCHDAY 2 - UEFA Champions League 2026/27
-https://tencent-cdn.tapmad.com/v1/019ea6d121dd15e8f4122afee4cf8f/019ea6d2f96e15e8f0602c5e1b7bc3/master.m3u8
 
