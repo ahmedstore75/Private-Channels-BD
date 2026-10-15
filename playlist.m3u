@@ -3,7 +3,25 @@
 # Playlist name : Tapmad Playlist
 # Developed by: Monirul Islam
 # Telegram group : https://t.me/sm_iptv_bd
-# Last Updated: 09:00:03 AM 15-10-2026 (BD Time)
-# All channel : 0
+# Last Updated: 03:00:09 AM 16-10-2026 (BD Time)
+# All channel : 6
 #=================================
+
+#EXTINF:-1 tvg-id="tapmad-18949" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791662064540x302.jpg" group-title="Football",Ferencvaros vs Viktoria Plzen - MATCHDAY 2 - UEFA Europa League 2026/27
+https://serieAleague.akamaized.net/hls/live/2107107/Tapmad-KjL52/master.m3u8
+
+#EXTINF:-1 tvg-id="tapmad-18950" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791662327540x302.jpg" group-title="Football",Rennes vs OFI - MATCHDAY 2 - UEFA Europa League 2026/27
+https://serieAleague.akamaized.net/hls/live/2107107/tap-BK-PSL-D1-E/master.m3u8
+
+#EXTINF:-1 tvg-id="tapmad-18951" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791662661540x302.jpg" group-title="Football",Dinamo Zagreb vs Anderlecht - MATCHDAY 2 - UEFA Europa League 2026/27
+https://serieAleague.akamaized.net/hls/live/2107107/A1@25853-tapmad/master.m3u8
+
+#EXTINF:-1 tvg-id="tapmad-18952" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791662914540x302.jpg" group-title="Football",NEC vs Levski Sofia - MATCHDAY 2 - UEFA Europa League 2026/27
+https://bpl24middleeast.akamaized.net/hls/live/2109311/j15klM//master.m3u8
+
+#EXTINF:-1 tvg-id="tapmad-18953" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791663199540x302.jpg" group-title="Football",Celta vs Juventus - MATCHDAY 2 - UEFA Europa League 2026/27
+https://saseries.akamaized.net/hls/live/2110097/28593jkiL-tapmad/master.m3u8
+
+#EXTINF:-1 tvg-id="tapmad-18958" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791664863540x302.jpg" group-title="Football",Marseille vs Olympiacos - MATCHDAY 2 - UEFA Europa League 2026/27
+https://bpl24middleeast.akamaized.net/hls/live/2109311/tapmad-PAKvsWI-BKd2-TesT/master.m3u8
 
