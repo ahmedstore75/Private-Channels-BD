@@ -3,13 +3,10 @@
 # Playlist name : Tapmad Playlist
 # Developed by: Monirul Islam
 # Telegram group : https://t.me/sm_iptv_bd
-# Last Updated: 04:00:05 PM 16-10-2026 (BD Time)
-# All channel : 2
+# Last Updated: 09:00:05 PM 16-10-2026 (BD Time)
+# All channel : 1
 #=================================
 
-#EXTINF:-1 tvg-id="tapmad-18249" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1792137214540x302.jpg" group-title="Football",City Club vs Bashundhara Kings - Round 4 - Bangladesh Football League 2026/27
-https://saseries.akamaized.net/hls/live/2110097/28593jkiL-tapmad/master.m3u8
-
-#EXTINF:-1 tvg-id="tapmad-18250" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1792137272540x302.jpg" group-title="Football",PWD Sports Club vs Mohammedan SC Ltd - Round 4 - Bangladesh Football League 2026/27
-https://saseries.akamaized.net/hls/live/2110097/FiFa-3827e1/master.m3u8
+#EXTINF:-1 tvg-id="tapmad-17098" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1792147582540x302.jpg" group-title="Football",Al Qadsiah vs Abha - MATCHDAY 9 - Saudi Pro League 2026/27
+https://serieAleague.akamaized.net/hls/live/2107107/A1@25853-tapmad/master.m3u8
 
