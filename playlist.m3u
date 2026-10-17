@@ -3,10 +3,19 @@
 # Playlist name : Tapmad Playlist
 # Developed by: Monirul Islam
 # Telegram group : https://t.me/sm_iptv_bd
-# Last Updated: 09:00:04 AM 17-10-2026 (BD Time)
-# All channel : 1
+# Last Updated: 04:00:06 PM 17-10-2026 (BD Time)
+# All channel : 4
 #=================================
 
-#EXTINF:-1 tvg-id="tapmad-18981" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791792730540x302.jpg" group-title="Mma",Carmouche vs Bishop 2 - Round 2 - PFL 2026
+#EXTINF:-1 tvg-id="tapmad-18251" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1792155878540x302.jpg" group-title="Football",Rahamatgonj MFS vs Brothers Union Ltd - Round 4 - Bangladesh Football League 2026/27
+https://saseries.akamaized.net/hls/live/2110097/tapmad258645/master.m3u8
+
+#EXTINF:-1 tvg-id="tapmad-18252" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1792155945540x302.jpg" group-title="Football",Abahani Ltd. Dhaka vs Chattogram City FC - Round 4 - Bangladesh Football League 2026/27
+https://saseries.akamaized.net/hls/live/2110097/FiFa-3827e1/master.m3u8
+
+#EXTINF:-1 tvg-id="tapmad-18253" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1792156018540x302.jpg" group-title="Football",Bangladesh Police FC vs Arambagh Krira Shangha - Round 4 - Bangladesh Football League 2026/27
+https://saseries.akamaized.net/hls/live/2110097/56408643-tapMad/master.m3u8
+
+#EXTINF:-1 tvg-id="tapmad-18992" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791963476540x302.jpg" group-title="Racing",Moto 1 - Olbia, Italy - Race 1 - UIM - ABP Aquabike World Championship 2026
 https://bpl24middleeast.akamaized.net/hls/live/2109311/j15klM//master.m3u8
 
