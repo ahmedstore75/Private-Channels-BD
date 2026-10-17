@@ -3,13 +3,10 @@
 # Playlist name : Tapmad Playlist
 # Developed by: Monirul Islam
 # Telegram group : https://t.me/sm_iptv_bd
-# Last Updated: 02:00:05 AM 17-10-2026 (BD Time)
-# All channel : 2
+# Last Updated: 09:00:04 AM 17-10-2026 (BD Time)
+# All channel : 1
 #=================================
 
-#EXTINF:-1 tvg-id="tapmad-18422" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1792154190540x302.jpg" group-title="Football",Le Mans vs Toulouse - MATCHDAY 7 - French Ligue 1 2026/27
-https://d8j84o343a5m2.cloudfront.net/live/testtapmad5/master.m3u8
-
-#EXTINF:-1 tvg-id="tapmad-18275" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1790932698540x302.jpg" group-title="Football",Deportivo vs Levante - MATCHDAY 9 - LaLiga 2026/27
-https://d8j84o343a5m2.cloudfront.net/live/testtapmad4/master.m3u8
+#EXTINF:-1 tvg-id="tapmad-18981" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791792730540x302.jpg" group-title="Mma",Carmouche vs Bishop 2 - Round 2 - PFL 2026
+https://bpl24middleeast.akamaized.net/hls/live/2109311/j15klM//master.m3u8
 
