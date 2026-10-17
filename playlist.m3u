@@ -3,19 +3,25 @@
 # Playlist name : Tapmad Playlist
 # Developed by: Monirul Islam
 # Telegram group : https://t.me/sm_iptv_bd
-# Last Updated: 04:00:06 PM 17-10-2026 (BD Time)
-# All channel : 4
+# Last Updated: 09:00:07 PM 17-10-2026 (BD Time)
+# All channel : 6
 #=================================
 
-#EXTINF:-1 tvg-id="tapmad-18251" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1792155878540x302.jpg" group-title="Football",Rahamatgonj MFS vs Brothers Union Ltd - Round 4 - Bangladesh Football League 2026/27
+#EXTINF:-1 tvg-id="tapmad-18901" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1792130757540x302.jpg" group-title="Cricket",Bangladesh vs Zimbabwe - 1st ODI - UAE ODI Tri-Series 2026
+https://saseries.akamaized.net/hls/live/2110097/306-tapmad/master.m3u8
+
+#EXTINF:-1 tvg-id="tapmad-19096" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1792231675540x302_.jpg" group-title="Mma",Nikoloz Abramishvili vs Aaron McKenzie - PFL vs RKENA - PFL 2026
+https://bpl24middleeast.akamaized.net/hls/live/2109311/j15klM//master.m3u8
+
+#EXTINF:-1 tvg-id="tapmad-17718" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791354679540x302.jpg" group-title="Cricket",India vs West Indies - 5th T20I - West Indies Tour of India 2026
+https://d8j84o343a5m2.cloudfront.net/live/testtapmad4/master.m3u8
+
+#EXTINF:-1 tvg-id="tapmad-18277" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1790933029540x302.jpg" group-title="Football",Villarreal vs Elche - MATCHDAY 9 - LaLiga 2026/27
 https://saseries.akamaized.net/hls/live/2110097/tapmad258645/master.m3u8
 
-#EXTINF:-1 tvg-id="tapmad-18252" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1792155945540x302.jpg" group-title="Football",Abahani Ltd. Dhaka vs Chattogram City FC - Round 4 - Bangladesh Football League 2026/27
-https://saseries.akamaized.net/hls/live/2110097/FiFa-3827e1/master.m3u8
+#EXTINF:-1 tvg-id="tapmad-18998" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791964131540x302.jpg" group-title="Racing",Moto 2 - Olbia, Italy - Race 2 - UIM - ABP Aquabike World Championship 2026
+https://bpl24middleeast.akamaized.net/hls/live/2109311/tapmad-PAKvsWI-BKd2-TesT/master.m3u8
 
-#EXTINF:-1 tvg-id="tapmad-18253" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1792156018540x302.jpg" group-title="Football",Bangladesh Police FC vs Arambagh Krira Shangha - Round 4 - Bangladesh Football League 2026/27
-https://saseries.akamaized.net/hls/live/2110097/56408643-tapMad/master.m3u8
-
-#EXTINF:-1 tvg-id="tapmad-18992" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791963476540x302.jpg" group-title="Racing",Moto 1 - Olbia, Italy - Race 1 - UIM - ABP Aquabike World Championship 2026
-https://bpl24middleeast.akamaized.net/hls/live/2109311/j15klM//master.m3u8
+#EXTINF:-1 tvg-id="tapmad-18423" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791881112540x302.jpg" group-title="Football",Strasbourg vs PSG - MATCHDAY 7 - French Ligue 1 2026/27
+https://d8j84o343a5m2.cloudfront.net/live/testtapmad2/master.m3u8
 
