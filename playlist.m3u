@@ -3,28 +3,13 @@
 # Playlist name : Tapmad Playlist
 # Developed by: Monirul Islam
 # Telegram group : https://t.me/sm_iptv_bd
-# Last Updated: 09:00:09 PM 18-10-2026 (BD Time)
-# All channel : 7
+# Last Updated: 02:00:05 AM 19-10-2026 (BD Time)
+# All channel : 2
 #=================================
 
-#EXTINF:-1 tvg-id="tapmad-18880" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791982339540x302.jpg" group-title="Cricket",Pakistan vs Sri Lanka - 1st ODI - Pakistan ODI Tri-Series 2026
-https://tencent-cdn.tapmad.com/v1/01a1456f124d15fc600b1e3e9683d7/01a145990eba15fc60e91e1786b054/main.m3u8
-
-#EXTINF:-1 tvg-id="tapmad-19004" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791964313540x302.jpg" group-title="Racing",Moto 3 - Olbia, Italy - Race 3 - UIM - ABP Aquabike World Championship 2026
-https://bpl24middleeast.akamaized.net/hls/live/2109311/j15klM//master.m3u8
-
-#EXTINF:-1 tvg-id="tapmad-18426" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791881566540x302.jpg" group-title="Football",Angers vs Marseille - MATCHDAY 7 - French Ligue 1 2026/27
+#EXTINF:-1 tvg-id="tapmad-18430" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791882115540x302.jpg" group-title="Football",OL vs Nice - MATCHDAY 7 - French Ligue 1 2026/27
 https://saseries.akamaized.net/hls/live/2110097/28593jkiL-tapmad/master.m3u8
 
-#EXTINF:-1 tvg-id="tapmad-18281" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1790933574540x302.jpg" group-title="Football",Celta vs Alaves - MATCHDAY 9 - LaLiga 2026/27
-https://saseries.akamaized.net/hls/live/2110097/tapmad258645/master.m3u8
-
-#EXTINF:-1 tvg-id="tapmad-18427" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791881711540x302.jpg" group-title="Football",Le Havre vs Auxerre - MATCHDAY 7 - French Ligue 1 2026/27
-https://d8j84o343a5m2.cloudfront.net/live/testtapmad3/master.m3u8
-
-#EXTINF:-1 tvg-id="tapmad-18428" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791881833540x302.jpg" group-title="Football",Lorient vs Monaco - MATCHDAY 7 - French Ligue 1 2026/27
-https://d8j84o343a5m2.cloudfront.net/live/testtapmad3/master.m3u8
-
-#EXTINF:-1 tvg-id="tapmad-18429" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1791881975540x302.jpg" group-title="Football",Paris FC vs Rennes - MATCHDAY 7 - French Ligue 1 2026/27
-https://saseries.akamaized.net/hls/live/2110097/56408643-tapMad/master.m3u8
+#EXTINF:-1 tvg-id="tapmad-18283" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1790936321540x302.jpg" group-title="Football",Real Madrid vs Sevilla - MATCHDAY 9 - LaLiga 2026/27
+https://saseries.akamaized.net/hls/live/2110097/FiFa-3827e1/master.m3u8
 
