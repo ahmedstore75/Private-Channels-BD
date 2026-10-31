@@ -3,13 +3,13 @@
 # Playlist name : Tapmad Playlist
 # Developed by: Monirul Islam
 # Telegram group : https://t.me/sm_iptv_bd
-# Last Updated: 08:00:06 PM 31-10-2026 (BD Time)
+# Last Updated: 01:00:05 AM 01-11-2026 (BD Time)
 # All channel : 2
 #=================================
 
-#EXTINF:-1 tvg-id="tapmad-18886" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1793346579540x302.jpg" group-title="Cricket",Pakistan vs Sri Lanka - Final - Pakistan ODI Tri-Series 2026
-https://tencent-cdn.tapmad.com/v1/01a14a9fb90c15fc60e91e1786b061/01a14a9feb881ea540a81c2b41b75e/main.m3u8
+#EXTINF:-1 tvg-id="tapmad-19450" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1793344933540x302.jpg" group-title="Football",Betis vs Malaga - MATCHDAY 11 - LaLiga 2026/27
+https://tencent-cdn.tapmad.com/v1/01a145b15ce115fc600b1e3e9683db/01a145b24db11ea557841e1612cf4c/main.m3u8
 
-#EXTINF:-1 tvg-id="tapmad-19448" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1793344761540x302.jpg" group-title="Football",Levante vs Atletico Madrid - MATCHDAY 11 - LaLiga 2026/27
-https://tencent-cdn.tapmad.com/v1/01a1456f124d15fc600b1e3e9683d7/01a145990eba15fc60e91e1786b054/main.m3u8
+#EXTINF:-1 tvg-id="tapmad-17111" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1793261240540x302.jpg" group-title="Football",Al Hilal vs Al Fateh - MATCHDAY 12 - Saudi Pro League 2026/27
+https://tencent-cdn.tapmad.com/v1/01a145abfb3a1ea540a81c2b41b751/01a145ae0ac115fc600b1e3e9683da/main.m3u8
 
