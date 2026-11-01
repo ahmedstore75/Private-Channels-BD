@@ -3,10 +3,16 @@
 # Playlist name : Tapmad Playlist
 # Developed by: Monirul Islam
 # Telegram group : https://t.me/sm_iptv_bd
-# Last Updated: 07:00:05 AM 01-11-2026 (BD Time)
-# All channel : 1
+# Last Updated: 02:00:06 PM 01-11-2026 (BD Time)
+# All channel : 3
 #=================================
 
-#EXTINF:-1 tvg-id="tapmad-19312" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1793016577540x302.jpg" group-title="Mma",Moicano vs Nolan - Fight Night - UFC 2026
-https://tencent-cdn.tapmad.com/v1/01a145b15ce115fc600b1e3e9683db/01a145b24db11ea557841e1612cf4c/main.m3u8
+#EXTINF:-1 tvg-id="tapmad-19059" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1792574116540x302.jpg" group-title="Cricket",New Zealand vs India - 5th T20I - India Tour of New Zealand 2026
+https://d8j84o343a5m2.cloudfront.net/live/testtapmad2/master.m3u8
+
+#EXTINF:-1 tvg-id="tapmad-19338" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1793264543540x302.jpg" group-title="Cricket",Hong Kong Sixes - Day 3 - Knockout Stage / Finals - Hong Kong International Sixes 2026
+https://tencent-cdn.tapmad.com/v1/01a1456f124d15fc600b1e3e9683d7/01a145990eba15fc60e91e1786b054/main.m3u8
+
+#EXTINF:-1 tvg-id="tapmad-19184" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1793489400540x302.jpg" group-title="Cricket",Sydney Sixers vs Hobart Hurricanes - Group Stage - Women's Big Bash League 2026
+https://tencent-cdn.tapmad.com/v1/01a14ab8af8915fc600b1e3e9683f0/01a14ab953dd1ea540a81c2b41b75f/main.m3u8
 
